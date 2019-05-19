@@ -1,0 +1,93 @@
+// Place all the styles related to the bookings controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+html {
+    font-family: 'M PLUS 1p', sans-serif;
+    box-sizing: border-box;
+    
+}
+
+.header {
+  height: 50px;
+  background-color: #0099CC;
+  padding-left: 20px;
+
+  font-family: "Seymour One", sans-serif;
+  font-size: 20px;
+  color: #F9CB40;
+  line-height: 50px;
+  letter-spacing: 1px;
+}
+
+
+.menu {
+    height: 40px;
+    background-color: #87ceeb;
+}
+
+.menu ul {
+    display: flex;
+    justify-content: center;
+}
+
+.menu a {
+    text-decoration: none;
+    color: #eee;
+}
+
+.menu li {
+    list-style: none;
+    margin: 0 30px;
+    line-height: 40px 
+}
+
+.contents {
+    height: calc(100vh - 140px);
+    background-color: #b0e0e6;
+}
+
+.main-contents {
+    width: 70%;
+    padding: 0 200px;
+}
+
+.form-group {
+    padding-top: 4rem;
+}
+
+.custom-select {
+    width: 90px;
+    padding: 10px;
+    margin: 15px;
+    border-radius: 8px;
+    background-color: #afa58d
+    
+}
+
+.button {
+    display: inline-block;
+    width: 90px;
+    padding: 10px;
+    margin: 15px;
+    border-radius: 8px;
+    background-color: #afa58d;
+    color: #fff;
+    text-decoration: none;
+    letter-spacing: 1px;
+    font-size: 1rem;
+}
+.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 100px;
+    color: #eee;
+    clear: both;
+    text-align: center;
+    background-color:#0072BB;
+    width: 100%;
+    font-size: 80%;
+    line-height: 1.8em;
+}
