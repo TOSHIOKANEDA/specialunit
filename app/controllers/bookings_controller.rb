@@ -9,7 +9,6 @@ end
 
 def create
   Booking.create(booking_params)
-  @booking = Booking.all
 end
 
 def create
@@ -20,6 +19,14 @@ def create
     redirect_to action: 'index', alert: '投稿できませんでした。'
   end
 end
+
+def update
+  booking = Booking.find(params[:id])
+  booking.update(booking_params)
+end
+
+
+
 
 # def confirm
 #   @booking = Booking.new(kind: params[:kind], place: params[:place], week:[:week])
@@ -39,7 +46,7 @@ end
 
 private
 def booking_params
-  params.permit(:place, :kind, :week)
+  params.permit(:place, :kind, :week, :sub_column, :main_column)
 end
 
 end

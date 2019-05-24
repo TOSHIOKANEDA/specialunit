@@ -1,5 +1,14 @@
-完成
+<h3>あなたが選択したのは下の感じです</h3>
 
 <p> コンテナタイプ: <%= @booking.kind %></p>
 <p> 港: <%= @booking.place %></p>
 <p> Week: <%= @booking.week %></p>
+
+ <%= form_tag("/bookings/#{@booking.id}", method: :patch ) do %>
+    <h3>
+      上の感じでOKなら、下をもちょっと教えてください
+    </h3>
+    <p><input type="text" name="main_column" value="<%= @booking.main_column%>" placeholder="船名とか"></p>
+    <p><input type="text" name="sub_column" value="<%= @booking.sub_column%>" placeholder="なんとかかんとか"></p>
+    <p><input type="submit" value="申請する">
+<% end %>
