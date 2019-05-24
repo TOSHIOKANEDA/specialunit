@@ -1,63 +1,21 @@
     <div class="header">
       S p e c i a l - C o n t a i n e r
     </div>
-    
-    <div class="menu">
-      <ul>
-        <li><a href="#">検索画面</a></li>
-        <li><a href="#">ログアウト</a></li>
-       </ul>
-    </div>
-    
-    
-<body>    
+  
     <div class="contents">
-    <div class="form-group">
-      <label for="custom-select-1b">Which Port ?</label><br>
-        <select id="custom-select-1b" class="custom-select">
-          <option>Tokyo</option>
-          <option>Yokohama</option>
-          <option>Nagoya</option>
-          <option>Yokkaichi</option>
-          <option>Osaka</option>
-          <option>Kobe</option>
-          <option>Hiroshima</option>
-          <option>Mizushima</option>
-          <option>Tokuyama</option>
-          <option>Moji</option>
-          <option>Hakata</option>
-        </select>
+      <ul>
+        <% if user_signed_in? %>
+        <p>右記のメールアドレスでログインしております" <strong><%= current_user.email %>"</strong>.</p>
+        <li><a href="edit_user_registration">プロフィール変更</a></li>
+        <li><a data-method="delete" href="destroy_user_session">ログアウト</a></li>
+        <li><a href="/bookings/new">検索画面</a></li>
+        <% else %>
+        <li><a data-method="new" href="/users/sign_in">サインイン</a></li>
+        <li><a href="/users/sign_up">ログイン</a></li>
+        <% end %>
+      </ul>
     </div>
-        
-    <div class="form-group">
-      <label for="custom-select-1b">Which Container Type ?</label><br>
-        <select id="custom-select-1b" class="custom-select">
-          <option>20FR</option>
-          <option>40FR</option>
-          <option>20OT</option>
-          <option>40OT</option>
-        </select>
-    </div>
-     
-    <div class="form-group">
-      <label for="custom-select-1b">Which week ?</label><br>
-        <select id="custom-select-1b" class="custom-select">
-          <% 52.times do |num| %>
-            <option><%= num + 1 %></option>
-          <% end %>
-        </select>
-    </div><br>
-    <div class="row justify-content-center">
-            <!--    <p>ボタンが・・</p>-->
-            <!--    <input type="button" value="ボタン">-->
-            <!--<% @booking.each do |booking| %>-->
-            <!--<p><%= booking.main_column %></p>-->
-            <!--<% end %>        -->
-      
-  <div class="buttons">
-    <a class="button" href="#about">Search</a>
-  </div>
-</div>
+
     
 
 <div class="footer">

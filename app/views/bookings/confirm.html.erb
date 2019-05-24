@@ -1,0 +1,19 @@
+
+
+<p> コンテナタイプ: <%= @booking.kind %></p>
+<p> 港: <%= @booking.place %></p>
+<p> Week: <%= @booking.week %></p>
+
+<%= form_for :@booking, url: new_bookings_path do |f| %>
+  <%= f.hidden_field :kind %>
+  <%= f.hidden_field :place %>
+  <%= f.hidden_field :week %>
+  <%= f.submit '登録する'%>
+<% end %>
+
+<%= form_for :@booking, url: bookings_path do |f| %>
+  <%= f.hidden_field :kind %>
+  <%= f.hidden_field :place %>
+  <%= f.hidden_field :week %>
+   <%= f.submit ' 間違い無いので、このまま進む'%>
+<% end %>

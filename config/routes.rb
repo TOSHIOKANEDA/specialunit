@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+ get   'bookings/new'  =>  'bookings#new'
+ post  'bookings'      =>  'bookings#create'
+  root 'bookings#index'
   devise_for :users
-  get 'bookings' => 'bookings#index'
+ 
+  
 end

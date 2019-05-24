@@ -1,0 +1,56 @@
+    <div class="header">
+      S p e c i a l - C o n t a i n e r
+    </div>
+  
+    <div class="menu">
+      <ul>
+        <li><a data-method="delete" href="destroy_user_session">ログアウト</a></li>
+       </ul>
+    </div>
+
+<div class="contents">
+  <%= form_tag('/bookings', method: :post) do %>
+  
+      <h3>
+      <label for="custom-select-1b">Which Port ?</label>
+      </h3><br>
+        <select name ="place" id="custom-select-1b" type="string" class="custom-select">
+          <option value ="Tokyo">Tokyo</option>
+          <option value ="Yokohama">Yokohama</option>
+          <option value ="Nagoya">Nagoya</option>
+          <option value ="Yokkaichi">Yokkaichi</option>
+          <option value ="Osaka">Osaka</option>
+          <option value ="Kobe">Kobe</option>
+          <option value ="Hiroshima">Hiroshima</option>
+          <option value ="Mizushima">Mizushima</option>
+          <option value ="Tokuyama">Tokuyama</option>
+          <option value ="Moji">Moji</option>
+          <option value ="Hakata">Hakata</option>
+        </select><br>
+  
+      <h3>
+      <label for="custom-select-1b">Which Container Type ?</label>
+      </h3><br>
+        <select name="kind" id="custom-select-1b" type="string" class="custom-select">
+          <option value ="20FR">20FR</option>
+          <option value ="40FR">40FR</option>
+          <option value ="20OT">20OT</option>
+          <option value ="40OT">40OT</option>
+        </select><br>
+        
+        <h3>  
+        <label for="custom-select-1b">Which week ?</label>
+        </h3><br>
+          <select name="week" id="custom-select-1b" type="integer" class="custom-select">
+            <% 52.times do |num| %>
+               <option value ="<%= num + 1 %>"><%= num + 1 %></option>
+            <% end %>
+          </select><br>
+    
+    <input type="submit" value ="確認画面へ">
+  <% end %>
+</div>
+
+<div class="footer">
+  <p>Copyright Toshio Kaneda 2019.</p>
+</div>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_19_110913) do
+ActiveRecord::Schema.define(version: 2019_05_20_135607) do
 
   create_table "bookings", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "volume"
@@ -20,6 +20,8 @@ ActiveRecord::Schema.define(version: 2019_05_19_110913) do
     t.integer "week"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string "place"
+    t.string "kind"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
