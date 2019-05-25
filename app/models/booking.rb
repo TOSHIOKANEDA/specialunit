@@ -1,3 +1,3 @@
 class Booking < ApplicationRecord
-  # validates_presence_of :kind, :place
+  has_one :acceptance
 end
