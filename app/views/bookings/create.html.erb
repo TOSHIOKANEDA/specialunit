@@ -6,9 +6,17 @@
 
  <%= form_tag("/bookings/#{@booking.id}", method: :patch ) do %>
     <h3>
-      上の感じでOKなら、下をもちょっと教えてください
+      上の感じでOKなら、本数とか船名なんかをもちょっと教えてください
     </h3>
+    <p>本数<select name="volume" id="custom-select-1b" type="integer" class="custom-select">
+        <% 10.times do |num|%>
+          <option value ="<% num + 1 %>"><%= num + 1 %></option>
+        <% end %>
+        </select></p>
     <p><input type="text" name="main_column" value="<%= @booking.main_column%>" placeholder="船名とか"></p>
     <p><input type="text" name="sub_column" value="<%= @booking.sub_column%>" placeholder="なんとかかんとか"></p>
     <p><input type="submit" value="申請する">
 <% end %>
+
+<h3> もし間違っていたらこちらから、戻ってください。</h3>
+<p><%= link_to "削除", "/bookings/#{@booking.id}", method: :delete  %></p>

@@ -25,6 +25,12 @@ def update
   booking.update(booking_params)
 end
 
+def destroy
+  @booking = Booking.find(params[:id])
+  @booking.destroy
+  redirect_to action: 'new'
+end
+
 
 
 
@@ -46,7 +52,7 @@ end
 
 private
 def booking_params
-  params.permit(:place, :kind, :week, :sub_column, :main_column)
+  params.permit(:place, :kind, :week, :sub_column, :main_column, :volume)
 end
 
 end
