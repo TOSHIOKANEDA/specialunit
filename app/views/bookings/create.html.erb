@@ -1,3 +1,4 @@
+
 <h3>あなたが選択したのは下の感じです</h3>
 
 <p> コンテナタイプ: <%= @booking.kind %></p>
@@ -15,8 +16,9 @@
         </select></p>
     <p><input type="text" name="main_column" value="<%= @booking.main_column%>" placeholder="船名とか"></p>
     <p><input type="text" name="sub_column" value="<%= @booking.sub_column%>" placeholder="なんとかかんとか"></p>
+    <%= hidden_field_tag :email, current_user.email %>
     <p><input type="submit" value="申請する">
 <% end %>
 
 <h3> もし間違っていたらこちらから、戻ってください。</h3>
-<p><%= link_to "削除", "/bookings/#{@booking.id}", method: :delete  %></p>
+<p><%= link_to "検索に戻る", "/bookings/#{@booking.id}", method: :delete  %></p>

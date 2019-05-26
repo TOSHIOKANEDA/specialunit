@@ -52,7 +52,7 @@ end
 
 private
 def booking_params
-  params.permit(:place, :kind, :week, :sub_column, :main_column, :volume)
+  params.permit(:place, :kind, :week, :sub_column, :main_column, :volume, :email)
 end
 
 end

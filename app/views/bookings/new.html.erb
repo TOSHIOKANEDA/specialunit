@@ -3,9 +3,7 @@
     </div>
   
     <div class="menu">
-      <ul>
-        <li><a data-method="delete" href="destroy_user_session">ログアウト</a></li>
-       </ul>
+      <ul><li><%= link_to "ログアウト", destroy_user_session_path, :method => :delete%></li></ul>
     </div>
 
 <div class="contents">
