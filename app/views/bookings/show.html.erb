@@ -1,0 +1,11 @@
+<h3>選択したplaceとkindとweekですでに存在するbookingを一覧にする</h3>
+
+<p> コンテナタイプ: <%= @booking.kind%></p>
+<p> 港: <%= @booking.place %></p>
+<p> Week: <%= @booking.week %></p>
+
+<% Booking.where(place: @booking.place).where(kind: @booking.kind).where(week: @booking.week).find_each do |p| %>
+  <h5><%= p.email %><h5><h5><%= p.volume %></h5>
+<% end %>
+
+<p><%= link_to "検索に戻る", "/bookings/new" %></p>

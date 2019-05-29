@@ -1,17 +1,28 @@
-
 <h3>あなたが選択したのは下の感じです</h3>
 
+<!--選択したコンテナタイプと港、Weekを表示させる-->
 <p> コンテナタイプ: <%= @booking.kind %></p>
 <p> 港: <%= @booking.place %></p>
 <p> Week: <%= @booking.week %></p>
 
+<!--同条件で既存の引き合い数を表示させる-->
+<h3>
+ところで、同じ条件で<%= Booking.where("place=? and kind=? and week=?", @booking.place, @booking.kind, @booking.week).pluck(:volume).compact.inject(:+) %>本引き合いあります。
+</h3>
+
+<!--showアクションからすでに引き合いとっている人たちとその本数を表示させる画面へ転移-->
+<p>すでにbookingしてる人々の詳細は<%= link_to "こちらです。", bookings_show_path(@booking.id) %></p>
+
+
+
+<!--リマーク２つと本数をカラムに追加し、current userからemailも追加し、申請完了-->
  <%= form_tag("/bookings/#{@booking.id}", method: :patch ) do %>
     <h3>
       上の感じでOKなら、本数とか船名なんかをもちょっと教えてください
     </h3>
     <p>本数<select name="volume" id="custom-select-1b" type="integer" class="custom-select">
-        <% 10.times do |num|%>
-          <option value ="<% num + 1 %>"><%= num + 1 %></option>
+        <% 10.times do |num| %>
+          <option value ="<%= num + 1 %>"><%= num + 1 %></option>
         <% end %>
         </select></p>
     <p><input type="text" name="main_column" value="<%= @booking.main_column%>" placeholder="船名とか"></p>
@@ -20,5 +31,6 @@
     <p><input type="submit" value="申請する">
 <% end %>
 
+<!--間違ってたら検索画面に戻ると同時に、データを消す-->
 <h3> もし間違っていたらこちらから、戻ってください。</h3>
 <p><%= link_to "検索に戻る", "/bookings/#{@booking.id}", method: :delete  %></p>

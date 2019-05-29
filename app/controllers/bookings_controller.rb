@@ -20,6 +20,11 @@ def create
   end
 end
 
+def show
+  @booking = Booking.find_by(id: params[:format])
+  @booking.destroy
+end
+
 def update
   booking = Booking.find(params[:id])
   booking.update(booking_params)
@@ -30,9 +35,6 @@ def destroy
   @booking.destroy
   redirect_to action: 'new'
 end
-
-
-
 
 # def confirm
 #   @booking = Booking.new(kind: params[:kind], place: params[:place], week:[:week])
