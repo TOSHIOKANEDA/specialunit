@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class AcceptanceTest < ActiveSupport::TestCase
+class AcceptingTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

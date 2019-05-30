@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 get 'bookings/show' =>  'bookings#show' 
   root 'bookings#index'
   devise_for :users
-
+ get  'acceptings/index' =>  'acceptings#index'
  
   
 end

@@ -1,3 +1,6 @@
-class AcceptanceController < ApplicationController
+class AcceptancesController < ApplicationController
+
+def index
+end
 
 end
