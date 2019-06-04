@@ -5,9 +5,12 @@
 <p> 港: <%= @booking.place %></p>
 <p> Week: <%= @booking.week %></p>
 
+<!--acceptingテーブルから可否の表示を行う-->
+<p>可否状況ですが。。。<%= @accepting_result %>です</p>
+
 <!--同条件で既存の引き合い数を表示させる-->
 <h3>
-ところで、同じ条件で<%= Booking.where("place=? and kind=? and week=?", @booking.place, @booking.kind, @booking.week).pluck(:volume).compact.inject(:+) %>本引き合いあります。
+  <%= @pre_booking_result %>
 </h3>
 
 <!--showアクションからすでに引き合いとっている人たちとその本数を表示させる画面へ転移-->

@@ -7,6 +7,8 @@ get 'bookings/show' =>  'bookings#show'
   root 'bookings#index'
   devise_for :users
  get  'acceptings/index' =>  'acceptings#index'
+ get   'acceptings/new'  =>  'acceptings#new'
+ post  'acceptings'      =>  'acceptings#create'
  
   
 end

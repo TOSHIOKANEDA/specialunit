@@ -13,11 +13,26 @@ end
 
 def create
   booking = Booking.new(booking_params)
-  if booking.save
-    @booking = Booking.order("id DESC").first
-  else
+    if booking.save
+      @booking = Booking.order("id DESC").first
+      @accepting = Accepting.where('kind=? and place=? and week=?', @booking.kind, @booking.place, @booking.week)
+      @pre_booking = Booking.where("place=? and kind=? and week=?", @booking.place, @booking.kind, @booking.week).pluck(:volume).compact.inject(:+)
+      
+        if @accepting.exists?
+          @accepting_result = "ダメ"
+        else
+          @accepting_result = "今のところOKそうなんで、申請進めてください"
+        end
+        
+        if @pre_booking > 0
+          @pre_booking_result = "ところで#{@pre_booking}本の引き合いがあります。"
+        else
+          @pre_booking_result = "引き合いないっすよ。よかったね。"
+        end
+        
+    else
     redirect_to action: 'index', alert: '投稿できませんでした。'
-  end
+    end
 end
 
 def show
@@ -35,22 +50,6 @@ def destroy
   @booking.destroy
   redirect_to action: 'new'
 end
-
-# def confirm
-#   @booking = Booking.new(kind: params[:kind], place: params[:place], week:[:week])
-#   return if @booking.valid?
-#   render :new
-# end
-
-# def back
-#   @booking = Booking.new(kind: params[:kind], place: params[:place], week:[:week])
-#   render :new
-# end
-
-# def create
-#   Booking.create(kind: params[:kind], place: params[:place], week:[:week])
-#   render :complete
-# end
 
 private
 def booking_params
