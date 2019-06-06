@@ -7,6 +7,8 @@
 
 <!--acceptingテーブルから可否の表示を行う-->
 <p>可否状況ですが。。。<%= @accepting_result %>です</p>
+<p>1週前でしたら、、、<%= @a_day_ahead_accepting_result %>です</p>
+<p>そして１週後でしたら。。。<%= @a_day_behind_accepting_result %>です</p>
 
 <!--同条件で既存の引き合い数を表示させる-->
 <h3>
@@ -31,7 +33,9 @@
     <p><input type="text" name="main_column" value="<%= @booking.main_column%>" placeholder="船名とか"></p>
     <p><input type="text" name="sub_column" value="<%= @booking.sub_column%>" placeholder="なんとかかんとか"></p>
     <%= hidden_field_tag :email, current_user.email %>
-    <p><input type="submit" value="申請する">
+    
+    <p><%= date_select :year, :year, start_year: Time.zone.now.year, end_year: 2100, discard_day: true,  discard_month: true, prompt: {year: "year"} %></p>
+    <p><input type="submit" value="申請する"></p>
 <% end %>
 
 <!--間違ってたら検索画面に戻ると同時に、データを消す-->
