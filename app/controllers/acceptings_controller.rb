@@ -1,9 +1,5 @@
 class AcceptingsController < ApplicationController
   
-  def index
-    @booking = Booking.all
-  end
-  
   def new
   end
   
@@ -13,10 +9,9 @@ class AcceptingsController < ApplicationController
   
 
 
-private
-def accepting_params
-  params.permit(:place, :kind, :week)
-end
+  private
+  def accepting_params
+    params.permit(:place, :kind, :week)
+  end
 
-  
 end

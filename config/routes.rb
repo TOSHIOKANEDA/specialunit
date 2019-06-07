@@ -6,7 +6,6 @@ devise_for :users
  delete 'bookings/:id' => 'bookings#destroy', as: 'destroy_booking'
 get 'bookings/show' =>  'bookings#show' 
   root 'bookings#index'
- get  'acceptings/index' =>  'acceptings#index'
  get   'acceptings/new'  =>  'acceptings#new'
  post  'acceptings'      =>  'acceptings#create'
  
