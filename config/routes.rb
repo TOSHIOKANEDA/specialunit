@@ -8,6 +8,6 @@ get 'bookings/show' =>  'bookings#show'
   root 'bookings#index'
  get   'acceptings/new'  =>  'acceptings#new'
  post  'acceptings'      =>  'acceptings#create'
- 
+ get 'acceptings/show' =>  'acceptings#show' 
   
 end

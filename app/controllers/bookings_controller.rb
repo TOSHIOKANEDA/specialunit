@@ -19,30 +19,35 @@ def create
       @pre_booking = Booking.where("place=? and kind=? and week=?", @booking.place, @booking.kind, @booking.week).pluck(:volume).compact.inject(:+)
       @a_day_behind = Accepting.where('kind=? and place=? and week=?', @booking.kind, @booking.place, (@booking.week + 1))
       @a_day_ahead = Accepting.where('kind=? and place=? and week=?', @booking.kind, @booking.place, (@booking.week - 1))
-      no = "ダメ"
+      no = "ダメそうっすけど、とりあえず進めてください"
       yes = "今のところOKそうなんで、申請進めてください"
-      no_idea = "年末年始っすよ。在庫確認する前にターミナルに受けれるのか確認"
+      no_idea = "年末年始っすけど、ターミナルの受け入れ大丈夫っすかー？"
+      ban_week = @booking.week == 1 || @booking.week == 2 || @booking.week == 52
       
         if @a.exists?
           @a_result = no
         else
-          @a_result = yes unless @booking.week == 1 || @booking.week == 2 || @booking.week == 51 || @booking.week == 52
-          @a_result = no_idea if @booking.week == 1 || @booking.week == 2 || @booking.week == 51 || @booking.week == 52
+          @a_result = yes unless ban_week
+          @a_result = no_idea if ban_week
         end
         
         if @a_day_behind.exists?
           @a_day_behind_result = no
         else
-          @a_day_behind_result = yes unless @booking.week == 1 || @booking.week == 2 || @booking.week == 51 || @booking.week == 52
-          @a_day_behind_result = no_idea if @booking.week == 1 || @booking.week == 2 || @booking.week == 51 || @booking.week == 52
+          @a_day_behind_result = yes unless ban_week
+          @a_day_behind_result = no_idea if ban_week
         end
         
         if @a_day_ahead.exists?
           @a_day_ahead_result = no
         else
-          @a_day_ahead_result = yes unless @booking.week == 1 || @booking.week == 2 || @booking.week == 51 || @booking.week == 52
-          @a_day_ahead_result = no_idea if @booking.week == 1 || @booking.week == 2 || @booking.week == 51 || @booking.week == 52
+          @a_day_ahead_result = yes unless ban_week
+          @a_day_ahead_result = no_idea if ban_week
         end
+        
+        
+        d = Date.today
+        @year = d.year
         
         if @pre_booking.blank?
           @pre_booking_result = "引き合いないっすよ。よかったね。"

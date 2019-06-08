@@ -46,7 +46,6 @@
                <option value ="<%= num + 1 %>"><%= num + 1 %></option>
             <% end %>
           </select><br>
-    <p><%= date_select :year, :year, start_year: Time.zone.now.year, end_year: 2100, discard_day: true,  discard_month: true, prompt: {year: "year"} %></p>
     
     <input type="submit" value ="確認画面へ">
   <% end %>
