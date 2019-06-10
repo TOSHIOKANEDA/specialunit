@@ -63,10 +63,18 @@ def create
     end
 end
 
-def show
+def show_prebookers
   @booking = Booking.find_by(id: params[:format])
   @booking.destroy
 end
+
+def search  
+end
+
+def result
+  @results = Booking.where(kind: params[:kind])
+end
+
 
 def update
   booking = Booking.find(params[:id])
@@ -79,9 +87,10 @@ def destroy
   redirect_to action: 'new'
 end
 
+
 private
 def booking_params
-  params.permit(:place, :kind, :week, :sub_column, :main_column, :volume, :email, :status, :year)
+  params.require(:booking).permit(:place, :kind, :week, :volume, :status, :year)
 end
 
 end

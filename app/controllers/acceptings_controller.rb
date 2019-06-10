@@ -7,7 +7,7 @@ def create
   Accepting.create(accepting_params)
 end
 
-可否状況のアップデートを行う画面を作成する際に使う
+# 可否状況のアップデートを行う画面を作成する際に使う
 
 def show
   @accepting = Accepting.all
