@@ -4,6 +4,7 @@
   
     <div class="menu">
       <ul><li><%= link_to "ログアウト", destroy_user_session_path, :method => :delete%></li></ul>
+      <ul>あなたは<%=current_user.email %>さんです。</ul>
     </div>
 
 <div class="contents">
@@ -26,7 +27,7 @@
           <option value ="Hakata">Hakata</option>
         </select><br>
         
-        <%= hidden_field_tag :status, "可否確認中" %>
+        <%= hidden_field_tag :status, "Waiting" %>
   
       <h3>
       <label for="custom-select-1b">Which Container Type ?</label>

@@ -16,46 +16,56 @@
 
 <div class="contents">
   <%= form_tag('/bookings/result',method: :get) do %>
-  <% select_tag 'kind', ' ' %>
-  
-      <!--<h3>-->
-      <!--<label for="custom-select-1b">Which Port ?</label>-->
-      <!--</h3><br>-->
-      <!--  <select name ="place" id="custom-select-1b" type="string" class="custom-select">-->
-      <!--    <option value ="Tokyo">Tokyo</option>-->
-      <!--    <option value ="Yokohama">Yokohama</option>-->
-      <!--    <option value ="Nagoya">Nagoya</option>-->
-      <!--    <option value ="Yokkaichi">Yokkaichi</option>-->
-      <!--    <option value ="Osaka">Osaka</option>-->
-      <!--    <option value ="Kobe">Kobe</option>-->
-      <!--    <option value ="Hiroshima">Hiroshima</option>-->
-      <!--    <option value ="Mizushima">Mizushima</option>-->
-      <!--    <option value ="Tokuyama">Tokuyama</option>-->
-      <!--    <option value ="Moji">Moji</option>-->
-      <!--    <option value ="Hakata">Hakata</option>-->
-      <!--  </select><br>-->
 
-  
-      <h3>
+        <h3>
       <label for="custom-select-1b">Which Container Type ?</label>
       </h3><br>
         <select name="kind" id="custom-select-1b" type="string" class="custom-select">
+          <option value ="">ALL</option>
           <option value ="20FR">20FR</option>
           <option value ="40FR">40FR</option>
           <option value ="20OT">20OT</option>
           <option value ="40OT">40OT</option>
         </select><br>
         
-        <!--<h3>  -->
-        <!--<label for="custom-select-1b">Which week ?</label>-->
-        <!--</h3><br>-->
-        <!--  <select name="week" id="custom-select-1b" type="integer" class="custom-select">-->
-        <!--    <% 52.times do |num| %>-->
-        <!--       <option value ="<%= num + 1 %>"><%= num + 1 %></option>-->
-        <!--    <% end %>-->
+        <h3>  
+        <label for="custom-select-1b">Which week ?</label>
+        </h3><br>
+          <select name="week" id="custom-select-1b" type="integer" class="custom-select">
+            <option value ="">ALL</option>
+            <% 52.times do |num| %>
+               <option value ="<%= num + 1 %>"><%= num + 1 %></option>
+            <% end %>
           </select><br>
-          
-          
+  
+      <h3>
+      <label for="custom-select-1b">Which Port ?</label>
+      </h3><br>
+        <select name ="place" id="custom-select-1b" type="string" class="custom-select">
+          <option value ="">ALL</option>
+          <option value ="Tokyo">Tokyo</option>
+          <option value ="Yokohama">Yokohama</option>
+          <option value ="Nagoya">Nagoya</option>
+          <option value ="Yokkaichi">Yokkaichi</option>
+          <option value ="Osaka">Osaka</option>
+          <option value ="Kobe">Kobe</option>
+          <option value ="Hiroshima">Hiroshima</option>
+          <option value ="Mizushima">Mizushima</option>
+          <option value ="Tokuyama">Tokuyama</option>
+          <option value ="Moji">Moji</option>
+          <option value ="Hakata">Hakata</option>
+        </select><br>
+        
+              <h3>
+      <label for="custom-select-1b">Which Status?</label>
+      </h3><br>
+        <select name ="status" id="custom-select-1b" type="string" class="custom-select">
+          <option value ="Waiting">新規申請</option>
+          <option value ="Confirmed">在庫確保済み</option>
+          <option value ="Waiting_List">キャンセル待ち</option>
+        </select><br>
+
+  
     
     <input type="submit" value ="確認画面へ">
   <% end %>

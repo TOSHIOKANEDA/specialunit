@@ -71,8 +71,14 @@ end
 def search  
 end
 
+# alertが発動しない・・・
+# searchは必ず１つ選ぶようにする
+
+
 def result
-  @results = Booking.where(kind: params[:kind])
+  @results = Booking.where(status: params[:status]) or where(kind: params[:kind]) or where(week: params[:week]) or where(place: params[:place])
+    no_msg = 'その条件でのデータは無いです'
+    redirect_to action: 'search', alert: no_msg if @results.blank?
 end
 
 
@@ -90,7 +96,7 @@ end
 
 private
 def booking_params
-  params.require(:booking).permit(:place, :kind, :week, :volume, :status, :year)
+  params.permit(:place, :kind, :week, :volume, :status, :year, :sub_column, :main_column, :email)
 end
 
 end
