@@ -71,14 +71,42 @@ end
 def search  
 end
 
-# alertが発動しない・・・
-# searchは必ず１つ選ぶようにする
-
 
 def result
-  @results = Booking.where(status: params[:status]) or where(kind: params[:kind]) or where(week: params[:week]) or where(place: params[:place])
-    no_msg = 'その条件でのデータは無いです'
-    redirect_to action: 'search', alert: no_msg if @results.blank?
+  a = params[:place]
+  b = params[:kind]
+  c = params[:week]
+  d = params[:status]
+  
+  place_condition = Booking.where(place: a).where(status: d)
+  kind_condition = Booking.where(kind: b).where(status: d)
+  all_condition = Booking.where(place: a).where(kind: b).where(week: c).where(status: d)
+  status_condition = Booking.where(status: d)
+  week_condition = Booking.where(week: c)
+
+if a.present?
+  if b.present?
+    if c.present?
+    @results = all_condition
+    else
+    @results = place_condition.where(kind: b)
+    end
+  elsif c.present?
+    @results = place_condition.where(week: c)
+  else
+    @results = place_condition
+  end
+    
+else
+  if b.present?
+    @results = kind_condition
+  elsif c.present?
+    @results = week_condition
+  else
+    @results = status_condition
+  end
+end
+redirect_to action: 'search', alert: 'その条件でのデータは無いです' if @results.blank? 
 end
 
 
@@ -99,4 +127,9 @@ def booking_params
   params.permit(:place, :kind, :week, :volume, :status, :year, :sub_column, :main_column, :email)
 end
 
+def search_params
+  params.permit(:place, :kind, :week, :volume, :status, :year, :sub_column, :main_column, :email)
 end
+
+end
+

@@ -1,6 +1,13 @@
 
 <% @results.each do |r| %>
-<%= r.id %>
+<p><%= r.id %></p>
+<p><%= r.status %></p>
+<p><%= r.place %></p>
+<p><%= r.volume %></p>
+<p><%= r.email %></p>
+<p><%= r.week %></p>
+<p><%= r.kind %></p>
+<p>'----------'</p>
 <% end %>
 
 <p><%= link_to "ジャッジ検索に戻る", "/bookings/search" %></p>
