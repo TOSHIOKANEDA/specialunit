@@ -6,15 +6,18 @@
       <ul>
         <% if user_signed_in? %>
         <p>右記のメールアドレスでログインしております" <strong><%= current_user.email %>"</strong>.</p>
-        <li><a href="edit_user_registration">プロフィール変更</a></li>
-        <li><a data-method="delete" href="destroy_user_session">ログアウト</a></li>
+        <li><a data-method="delete" href="/users/sign_out">ログアウト</a></li>
         <li><a href="/bookings/new">検索画面</a></li>
+          <% if current_user.admin? %>
+          <li><a href="/bookings/search">コンテナ課担当者さん専用画面</a></li>
+          <% end %>
         <% else %>
-        <li><a data-method="new" href="/users/sign_in">新規登録</a></li>
-        <li><a href="/users/sign_up">ログイン</a></li>
+        <li><a href="/users/sign_up">新規登録</a></li>
+        <li><a data-method="new" href="/users/sign_in">ログイン</a></li>
         <% end %>
       </ul>
     </div>
+
 
     
 

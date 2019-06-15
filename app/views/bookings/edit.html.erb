@@ -1,0 +1,20 @@
+ <h1>EDIT画面</h1>
+ 
+  <%= form_tag("/bookings/#{@booking.id}", method: :patch ) do %>
+    <p>本数<select name="volume" id="custom-select-1b" type="integer" class="custom-select">
+        <% 10.times do |num| %>
+          <option value ="<%= num + 1 %>"><%= num + 1 %></option>
+        <% end %>
+        </select></p>
+    <p>年を選択<select name="year" id="custom-select-1b" type="integer" class="custom-select">
+        <% d = Date.today %>
+        <% @year = d.year %>
+        <option value ="<%= @year %>"><%= @year %></option>
+        <option value ="<%= @year + 1 %>"><%= @year + 1 %></option>
+        </select></p>
+    
+    <p><input type="submit" value="申請する"></p>
+
+  
+<% end %>
+      

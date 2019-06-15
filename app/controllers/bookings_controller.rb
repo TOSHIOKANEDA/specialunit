@@ -1,7 +1,8 @@
 class BookingsController < ApplicationController
 
+before_action :move_to_index, except: :index
+
 def index
-  @booking = Booking.all
 end
 
 def new
@@ -109,6 +110,9 @@ end
 redirect_to action: 'search', alert: 'その条件でのデータは無いです' if @results.blank? 
 end
 
+def edit
+  @booking = Booking.find(params[:id])
+end
 
 def update
   booking = Booking.find(params[:id])
@@ -121,15 +125,14 @@ def destroy
   redirect_to action: 'new'
 end
 
-
 private
 def booking_params
   params.permit(:place, :kind, :week, :volume, :status, :year, :sub_column, :main_column, :email)
 end
 
-def search_params
-  params.permit(:place, :kind, :week, :volume, :status, :year, :sub_column, :main_column, :email)
-end
+  def move_to_index
+    redirect_to action: :index unless user_signed_in?
+  end
 
 end
 
