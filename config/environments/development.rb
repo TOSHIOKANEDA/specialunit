@@ -65,8 +65,8 @@ Rails.application.configure do
    address:              'smtp.gmail.com',
    port:                  587,
    domain:               'gmail.com',
-   user_name:            '<gmailのメールアドレス>',
-   password:             '<gmailのパスワード>',
+   user_name:            '', <=ここGIT用に消した！Gmailアドレス
+   password:             '', <=ここGIT用に消した！アプリ用のパスワード
    authentication:       'plain',
    enable_starttls_auto:  true
   }

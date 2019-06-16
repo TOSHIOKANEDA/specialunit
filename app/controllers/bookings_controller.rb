@@ -114,9 +114,12 @@ def edit
   @booking = Booking.find(params[:id])
 end
 
+# 0616追記！InquiryMailer.send_when_signup(@booking).deliver
+
 def update
   booking = Booking.find(params[:id])
   booking.update(booking_params)
+  BookingMailer.send_when_update(booking).deliver_now
 end
 
 def destroy

@@ -2,10 +2,10 @@
 class InquiryMailerPreview < ActionMailer::Preview
 
 
-  def inquiry
-     inquiry = Inquiry.new(name: "侍 太郎", message: "問い合わせメッセージ")
+  def booking
+     booking = Booking.find(id:1)
     
-     InquiryMailer.send_mail(inquiry)
+     InquiryMailer.send_when_update(booking)
   end
 
 end
