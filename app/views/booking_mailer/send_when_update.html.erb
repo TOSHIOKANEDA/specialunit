@@ -1,6 +1,13 @@
-<%= @booking.email %>さんからの新規在庫確認
-・内容
-<p><%= @booking.volume %></p>
-<p><%= @booking.week %></p>
-<p><%= @booking.place %></p>
-<p><%= @booking.kind %></p>
+
+<%= @booking.email %>さんからの新規在庫内容確認
+内容: <%= @status %>
+<p>本数：<%= @booking.volume %></p>
+<p>ピック予定WEEK：<%= @booking.week %></p>
+<p>港：<%= @booking.place %></p>
+<p>コンテナタイプ：<%= @booking.kind %></p>
+<p>年：<%= @booking.year %></p>
+<p>船名とかETAとか：<%= @booking.main_column %></p>
+<p>その他Remark：<%= @booking.sub_column %></p>
+
+
+<p>送信専用アドレスから送信されてきてます。送信元に返信せず、このメールに返信でコンテナ課担当者さん<%= @admin_email %>へメールできます</p>

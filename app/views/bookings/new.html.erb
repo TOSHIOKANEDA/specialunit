@@ -27,7 +27,11 @@
           <option value ="Hakata">Hakata</option>
         </select><br>
         
-        <%= hidden_field_tag :status, "Waiting" %>
+        <%= hidden_field_tag :status, "waiting" %>
+        <% tk = [*'A'..'Z', *0..9].shuffle[0..3].join %>
+        <% tk_number = "TK-" + tk %>
+        <%= hidden_field_tag :tk_number, tk_number %>
+        
   
       <h3>
       <label for="custom-select-1b">Which Container Type ?</label>

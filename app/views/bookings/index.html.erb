@@ -7,9 +7,14 @@
         <% if user_signed_in? %>
         <p>右記のメールアドレスでログインしております" <strong><%= current_user.email %>"</strong>.</p>
         <li><a data-method="delete" href="/users/sign_out">ログアウト</a></li>
+        <li><a data-method="delete" href="/users/sign_out">パスワードの変更</a></li>
         <li><a href="/bookings/new">検索画面</a></li>
           <% if current_user.admin? %>
-          <li><a href="/bookings/search">コンテナ課担当者さん専用画面</a></li>
+          <li><a href="/bookings/search">在庫可否をするページ　[コンテナ課担当者さん専用]</a></li>
+          <li><a href="/acceptings/new">在庫ありませんの登録・削除ページ　[コンテナ課担当者さん専用]</a></li>
+          <li><a href="/acceptings/show">現在登録済みの在庫ありませんを確認するページ　[コンテナ課担当者さん専用]</a></li>
+          <li><a href="/bookings/search">間違えて変更した人の為に直してあげるページ　[コンテナ課担当者さん専用]</a></li>
+          <li><a href="/users/edit">担当者を変更するページ　[コンテナ課担当者さん専用]</a></li>
           <% end %>
         <% else %>
         <li><a href="/users/sign_up">新規登録</a></li>

@@ -44,4 +44,4 @@
 
 <!--間違ってたら検索画面に戻ると同時に、データを消す-->
 <h3> もし間違っていたらこちらから、戻ってください。</h3>
-<p><%= link_to "検索に戻る", "/bookings/#{@booking.id}", method: :delete  %></p>
+<p><%= link_to "検索に戻る", "bookings/#{@booking.id}", method: :delete %></p>

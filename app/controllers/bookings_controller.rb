@@ -5,6 +5,11 @@ before_action :move_to_index, except: :index
 def index
 end
 
+def admin
+redirect_to action: :index if current_user.admin.blank?
+@users = User.all
+end
+
 def new
 end
 
@@ -60,7 +65,7 @@ def create
             end
         end
       else
-      redirect_to action: 'index', alert: '投稿できませんでした。'
+      redirect_to action: 'search', alert: '投稿できませんでした。'
     end
 end
 
@@ -69,7 +74,8 @@ def show_prebookers
   @booking.destroy
 end
 
-def search  
+def search
+  redirect_to action: :index if current_user.admin.blank?
 end
 
 
@@ -85,36 +91,36 @@ def result
   status_condition = Booking.where(status: d)
   week_condition = Booking.where(week: c)
 
-if a.present?
-  if b.present?
-    if c.present?
-    @results = all_condition
+  if a.present?
+    if b.present?
+      if c.present?
+      @results = all_condition
+      else
+      @results = place_condition.where(kind: b)
+      end
+    elsif c.present?
+      @results = place_condition.where(week: c)
     else
-    @results = place_condition.where(kind: b)
+      @results = place_condition
     end
-  elsif c.present?
-    @results = place_condition.where(week: c)
+      
   else
-    @results = place_condition
+    if b.present?
+      @results = kind_condition
+    elsif c.present?
+      @results = week_condition
+    else
+      @results = status_condition
+    end
   end
-    
-else
-  if b.present?
-    @results = kind_condition
-  elsif c.present?
-    @results = week_condition
-  else
-    @results = status_condition
-  end
-end
-redirect_to action: 'search', alert: 'その条件でのデータは無いです' if @results.blank? 
+  redirect_to({action: 'search'}, alert: "その条件ではなし！") if @results.blank?
+  
 end
 
 def edit
   @booking = Booking.find(params[:id])
 end
 
-# 0616追記！InquiryMailer.send_when_signup(@booking).deliver
 
 def update
   booking = Booking.find(params[:id])
@@ -130,7 +136,7 @@ end
 
 private
 def booking_params
-  params.permit(:place, :kind, :week, :volume, :status, :year, :sub_column, :main_column, :email)
+  params.permit(:place, :kind, :week, :volume, :status, :year, :sub_column, :main_column, :email, :admin, :tk_number)
 end
 
   def move_to_index

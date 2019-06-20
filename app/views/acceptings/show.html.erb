@@ -1,0 +1,12 @@
+
+<% @accepting.each do |r| %>
+<% r.id %>
+<p><%= r.kind %></p>
+<p><%= r.place %></p>
+<p><%= r.week %></p>
+<p><%= r.year %></p>
+<p><%= link_to 'ステータス削除', "/acceptings/#{r.id}", method: :delete %></p>
+<p>'----------'</p>
+<% end %>
+
+<p><%= link_to "在庫ありません登録・削除に戻る", "/acceptings/new" %></p>

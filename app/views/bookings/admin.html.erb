@@ -1,0 +1,8 @@
+
+<% @users.each do |r| %>
+<p><%= r.email %></p>
+<p><%= link_to '担当者をこの人の情報を更新する', "/users/#{r.id}/edit", method: :get %></p>
+<p>'----------'</p>
+<% end %>
+
+<p><%= link_to "インデックスに戻る", "/" %></p>
