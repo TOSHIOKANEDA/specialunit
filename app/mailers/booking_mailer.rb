@@ -21,9 +21,9 @@ class BookingMailer < ApplicationMailer
     
      @status = status_update_check
 
-    mail from: '"TK在庫確認だぉ" <????????h@gmail.com>',
-    to: '??????@gmail.com',
-    reply_to: '????????@hotmail.com',
+    mail from: '"TK在庫確認だぉ" <????@gmail.com>',
+    to: '????@gmail.com',
+    reply_to: '?????@gmail.com',
     subject: "[" + booking.tk_number + "]" + booking.email + 'さん / ' + booking.place + '/' + booking.kind + '/ '+ booking.volume.to_s + 
             'について' + status_update_check + admin_email
     

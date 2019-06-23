@@ -18,8 +18,11 @@ patch 'bookings/:id/edit' => 'bookings#edit'
     get '/users/sign_out' => 'devise/sessions#destroy'
   get 'bookings/admin'  =>  'bookings#admin'
   get 'users/:id/edit'  =>  'users/sessions#edit'
+    patch 'users/:id/edit' => 'users/sessions#update'
 delete 'bookings/:id' => 'bookings#destroy', as: 'destroy_booking'
   get 'bookings/:id' => 'bookings#destroy'
+
+  
   end
   
 end

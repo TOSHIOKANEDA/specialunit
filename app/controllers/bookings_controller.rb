@@ -65,7 +65,7 @@ def create
             end
         end
       else
-      redirect_to action: 'new', alert: '投稿できませんでした。'
+      redirect_to action: 'search', alert: '投稿できませんでした。'
     end
 end
 

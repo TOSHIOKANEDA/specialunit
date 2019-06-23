@@ -1,1 +1,11 @@
 <p>ユーザの情報を変更します</p>
+
+
+ <%= form_with model: @user, method: :patch, local: true do |form| %>
+  <p><%= form.text_field :email %></p>
+<p><%= form.select :admin, [["担当", "1"], ["一般", "0"]] %></p>
+
+
+
+  <%= form.submit %>
+<% end %>

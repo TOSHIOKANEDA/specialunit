@@ -26,6 +26,19 @@ class Users::SessionsController < Devise::SessionsController
   # end
   
   def edit
-    
+    @user = User.find_by(id: params[:format])
   end
+  
+  def update
+    user = User.find(params[:id])
+    user.update(user_params)
+    user.save!
+  end
+  
+  
+  
+  private
+  def user_params
+    params.permit(:admin, :email)
+  end  
 end
