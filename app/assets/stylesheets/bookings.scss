@@ -7,11 +7,12 @@ html {
     font-family: 'M PLUS 1p', sans-serif;
     box-sizing: border-box;
     
+    
 }
 
 .header {
   height: 50px;
-  background-color: #0099CC;
+  background-color: #00008b;
   padding-left: 20px;
 
   font-family: "Seymour One", sans-serif;
@@ -24,7 +25,7 @@ html {
 
 .menu {
     height: 40px;
-    background-color: #87ceeb;
+    background-color: #696969;
 }
 
 .menu ul {
@@ -45,7 +46,12 @@ html {
 
 .contents {
     height: calc(100vh - 140px);
-    background-color: #b0e0e6;
+    background-color: #696969;
+}
+
+
+.contents ul {
+    line-height: 70px
 }
 
 .main-contents {
@@ -66,18 +72,7 @@ html {
     
 }
 
-.button {
-    display: inline-block;
-    width: 90px;
-    padding: 10px;
-    margin: 15px;
-    border-radius: 8px;
-    background-color: #afa58d;
-    color: #fff;
-    text-decoration: none;
-    letter-spacing: 1px;
-    font-size: 1rem;
-}
+
 .footer {
     position: fixed;
     bottom: 0;
@@ -86,8 +81,159 @@ html {
     color: #eee;
     clear: both;
     text-align: center;
-    background-color:#0072BB;
+    background-color:#00008b;
     width: 100%;
     font-size: 80%;
     line-height: 1.8em;
+}
+
+.btn-square-pop {
+  position: relative;
+  display: inline-block;
+  padding: 0.25em 0.5em;
+  text-decoration: none;
+  color: #FFF;
+  background: #fd9535;/*背景色*/
+  border-bottom: solid 2px #d27d00;/*少し濃い目の色に*/
+  border-radius: 4px;/*角の丸み*/
+  box-shadow: inset 0 2px 0 rgba(255,255,255,0.2), 0 2px 2px rgba(0, 0, 0, 0.19);
+  font-weight: bold;
+  line-height:100%
+}
+
+.btn-square-pop:active {
+  border-bottom: solid 2px #fd9535;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.30);
+}
+
+.btn-square-pop2 {
+  position: relative;
+  display: inline-block;
+  padding: 0.25em 0.5em;
+  text-decoration: none;
+  color: #FFF;
+  background: #800000;/*背景色*/
+  border-bottom: solid 2px #d27d00;/*少し濃い目の色に*/
+  border-radius: 4px;/*角の丸み*/
+  box-shadow: inset 0 2px 0 rgba(255,255,255,0.2), 0 2px 2px rgba(0, 0, 0, 0.19);
+  font-weight: bold;
+  line-height:100%
+}
+
+.btn-square-pop2:active {
+  border-bottom: solid 2px #FFCCFF;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.30);
+}
+
+
+.left_wrap {
+  width: 49%; /*左カラム幅設定*/
+  float: left; /*左にフロート配置*/
+}
+
+.right_wrap {
+  width: 49%; /*右カラム幅設定*/
+  float: right; /*右のフロート配置*/
+}
+
+// ここselectのCSS
+
+.cp_ipselect {
+  overflow: hidden;
+  width: 20%;
+  margin: 2em auto;
+  text-align: center;
+}
+.cp_ipselect select {
+  width: 100%;
+  padding-right: 1em;
+  cursor: pointer;
+  text-indent: 0.01px;
+  text-overflow: ellipsis;
+  border: none;
+  outline: none;
+  background: transparent;
+  background-image: none;
+  box-shadow: none;
+  -webkit-appearance: none;
+  appearance: none;
+}
+.cp_ipselect select::-ms-expand {
+  display: none;
+}
+.cp_ipselect.cp_sl04 {
+  position: static;
+  border-radius: 2px;
+  border: 2px solid #da3c41;
+  border-radius: 10px;
+  background: #ffffff;
+}
+.cp_ipselect.cp_sl04::before {
+  position: absolute;
+  top: 0.8em;
+  right: 0.8em;
+  width: 0;
+  height: 0;
+  padding: 0;
+  content: '';
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 6px solid #da3c41;
+  pointer-events: none;
+}
+.cp_ipselect.cp_sl04 select {
+  padding: 10px 38px 8px 8px;
+  color: #da3c41;
+}
+
+// ここまで
+
+// seek_booking_resultの位置
+
+ 
+.centering_item {
+    width: 500px;               /* 幅指定 */
+    height: 90px;               /* 高さ指定 */
+    margin:  0 auto;            /* 中央寄せ */
+}
+
+// ここまで
+
+// seek_booking_resultのテーブルaaa
+
+table.aaa{
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 5;
+}
+
+
+
+table.aaa th:after{
+  display: block;
+  content: "";
+  width: 15px;
+  height: 2px;
+  background-color: #333;
+  position: absolute;
+  top:calc(50% - 1px);
+  right:50px;
+}
+
+table.aaa th,table td{
+  position: relative;
+  padding: 15px 15px;
+  width: 50% 50%;
+  text-align: center;
+}
+
+table.aaa tr:nth-child(odd){
+  background-color: #eee
+}
+
+// ここまで
+
+// seek_booking_resultのテーブルbbb
+
+  
 }

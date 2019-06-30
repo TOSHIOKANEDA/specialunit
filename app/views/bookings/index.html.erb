@@ -1,31 +1,31 @@
-    <div class="header">
-      S p e c i a l - C o n t a i n e r
-    </div>
-  
+<%= render 'shared/head' %>  
+
     <div class="contents">
+      <div class="left_wrap">
       <ul>
         <% if user_signed_in? %>
-        <p>右記のメールアドレスでログインしております" <strong><%= current_user.email %>"</strong>.</p>
-        <li><a data-method="delete" href="/users/sign_out">ログアウト</a></li>
-        <li><a data-method="delete" href="/users/sign_out">パスワードの変更</a></li>
-        <li><a href="/bookings/new">検索画面</a></li>
-          <% if current_user.admin? %>
-          <li><a href="/bookings/search">在庫可否をするページ　[コンテナ課担当者さん専用]</a></li>
-          <li><a href="/acceptings/new">在庫ありませんの登録・削除ページ　[コンテナ課担当者さん専用]</a></li>
-          <li><a href="/acceptings/show">現在登録済みの在庫ありませんを確認するページ　[コンテナ課担当者さん専用]</a></li>
-          <li><a href="/bookings/search">間違えて変更した人の為に直してあげるページ　[コンテナ課担当者さん専用]</a></li>
-          <li><a href="/bookings/admin">担当者を変更するページ　[コンテナ課担当者さん専用]</a></li>
-          <% end %>
+        <li><a data-method="get" class="btn-square-pop" href='/users/edit.<%= current_user.id %>'>パスワードの変更</a></li>
+        <li><a class="btn-square-pop" href="/bookings/new">Booking</a></li>
+        <li><a class="btn-square-pop" href="/bookings/seek_booking">在庫確認</a></li>
+      </ul>
+      </div>
+    
+      <div class="right_wrap">
+        <ul>
+        <% if current_user.admin? %>
+          <p><a class="btn-square-pop2" href="/bookings/search">在庫可否</a></p>
+          <p><a class="btn-square-pop2" href="/acceptings/new">在庫ありませんの登録・削除ページ</a></p>
+          <p><a class="btn-square-pop2" href="/acceptings/show">現在登録済みの在庫ありませんを確認するページ</a></p>
+          <p><a class="btn-square-pop2" href="/bookings/search">間違えて変更した人の為に直してあげるページ</a></p>
+          <p><a class="btn-square-pop2" href="/bookings/admin">担当者を変更するページ</a></p>
+        <% end %>
         <% else %>
         <li><a href="/users/sign_up">新規登録</a></li>
         <li><a data-method="new" href="/users/sign_in">ログイン</a></li>
         <% end %>
-      </ul>
+        </ul>
+      </div>
     </div>
 
+<%= render 'shared/bottom' %>  
 
-    
-
-<div class="footer">
-  <p>Copyright Toshio Kaneda 2019.</p>
-</div>

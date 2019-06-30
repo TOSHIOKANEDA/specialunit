@@ -1,0 +1,10 @@
+    <div class="header">
+      S p e c i a l - C o n t a i n e r
+    </div>
+  
+    <div class="menu">
+      <ul>
+        <li>あなたは<%=current_user.email %>さんです。</li>
+        <li><%= link_to "ログアウト", destroy_user_session_path, :method => :delete, class: "btn-square-pop"%></li>
+      </ul>
+    </div>

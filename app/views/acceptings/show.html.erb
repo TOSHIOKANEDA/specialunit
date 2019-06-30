@@ -1,3 +1,4 @@
+<%= render 'shared/head' %> 
 
 <% @accepting.each do |r| %>
 <% r.id %>
@@ -10,3 +11,5 @@
 <% end %>
 
 <p><%= link_to "在庫ありません登録・削除に戻る", "/acceptings/new" %></p>
+
+<%= render 'shared/bottom' %> 

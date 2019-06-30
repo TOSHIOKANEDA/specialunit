@@ -1,64 +1,80 @@
-    <div class="header">
-      S p e c i a l - C o n t a i n e r
+<%= render 'shared/head' %>
+
+<%= form_for(@booking, url: { action: :confirm }) do |f| %>
+  <div>
+    <div>
+    <strong>港</strong>
+    <% if @w_place.present? %>
+    <%= f.select :place, [@w_place] %>
+    <% else %>
+       <%= f.select :place, 
+        [["Tokyo", "Tokyo"], 
+        ["Yokohama", "Yokohama"],
+        ["Nagoya", "Nagoya"],
+        ["Osaka", "Osaka"],
+        ["Kobe", "Kobe"],
+        ["Moji", "Moji"], 
+        ["Hakata", "Hakata"],
+        ["Shimizu", "Shimizu"],
+        ["Chiba", "Chiba"],
+        ["Kawasaki", "Kawasaki"],
+        ["Yokkaichi", "Yokkaichi"],
+        ["Mizushima", "Mizushima"],
+        ["Hiroshima", "Hiroshima"],
+        ["Tokuyama", "Tokuyama"]] %>
+    <% end %>
     </div>
-  
-    <div class="menu">
-      <ul><li><%= link_to "ログアウト", destroy_user_session_path, :method => :delete%></li></ul>
-      <ul>あなたは<%=current_user.email %>さんです。</ul>
+    
+    <div>
+    <strong>コンテナタイプ</strong>
+    <% if @w_kind.present? %>
+    <%= f.select :kind, [@w_kind] %>
+    <% else %>
+       <%= f.select :kind, 
+        [["20OT", "20OT"], 
+        ["40OT", "40OT"],
+        ["20FR", "20FR"],
+        ["40FR", "40FR"]] %>
+    <% end %>
+    </div>
+    
+    <div>
+    <strong>WEEK</strong>
+    <% if @w_week.present? %>
+    <%= f.select :week, [@w_week] %>
+    <% else %>
+       <%= f.select :week, options_for_select((1..52).to_a) %>
+    <% end %>
+    </div>
+    
+    <div>
+    <strong>Volume</strong>
+       <%= f.select :volume, options_for_select((1..15).to_a) %>
+    </div>
+    
+    <div>
+    <strong>YEAR</strong>
+      <%= f.select :year, Date.today.year .. Date.today.year+1 %>
+    </div>
+    
+    <div>
+    <strong>リマーク</strong>
+      <%= f.text_field :main_column %>
+    </div>
+    
+    <div>
+    <strong>リマーク2</strong>
+      <%= f.text_field :sub_column %>
     </div>
 
-<div class="contents">
-  <%= form_tag('/bookings', method: :post) do %>
-  
-      <h3>
-      <label for="custom-select-1b">Which Port ?</label>
-      </h3><br>
-        <select name ="place" id="custom-select-1b" type="string" class="custom-select">
-          <option value ="Tokyo">Tokyo</option>
-          <option value ="Yokohama">Yokohama</option>
-          <option value ="Nagoya">Nagoya</option>
-          <option value ="Yokkaichi">Yokkaichi</option>
-          <option value ="Osaka">Osaka</option>
-          <option value ="Kobe">Kobe</option>
-          <option value ="Hiroshima">Hiroshima</option>
-          <option value ="Mizushima">Mizushima</option>
-          <option value ="Tokuyama">Tokuyama</option>
-          <option value ="Moji">Moji</option>
-          <option value ="Hakata">Hakata</option>
-        </select><br>
-        
-        <%= hidden_field_tag :status, "waiting" %>
+        <%= f.hidden_field :status, :value => "waiting" %>
         <% tk = [*'A'..'Z', *0..9].shuffle[0..3].join %>
         <% tk_number = "TK-" + tk %>
-        <%= hidden_field_tag :tk_number, tk_number %>
-        
-  
-      <h3>
-      <label for="custom-select-1b">Which Container Type ?</label>
-      </h3><br>
-        <select name="kind" id="custom-select-1b" type="string" class="custom-select">
-          <option value ="20FR">20FR</option>
-          <option value ="40FR">40FR</option>
-          <option value ="20OT">20OT</option>
-          <option value ="40OT">40OT</option>
-        </select><br>
-        
-        <h3>  
-        <label for="custom-select-1b">Which week ?</label>
-        </h3><br>
-          <select name="week" id="custom-select-1b" type="integer" class="custom-select">
-            <% 52.times do |num| %>
-               <option value ="<%= num + 1 %>"><%= num + 1 %></option>
-            <% end %>
-          </select><br>
-          
-          
+        <%= f.hidden_field :tk_number, :value => "#{tk_number}" %>
+        <%= f.hidden_field :email, :value => current_user.email %>
     
-    <input type="submit" value ="確認画面へ">
-  <% end %>
-  <%= link_to "目次に戻る", '/'%>
-</div>
+      <%= f.submit '確認画面へ' %>
+  </div>
+<% end %>
 
-<div class="footer">
-  <p>Copyright Toshio Kaneda 2019.</p>
-</div>
+<%= render 'shared/bottom' %>

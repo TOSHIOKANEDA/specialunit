@@ -1,0 +1,34 @@
+<%= render 'shared/head' %>
+
+
+    <div class="centering_item">
+      <table class ="aaa">
+      <h3>あなたが選択したのは下の感じです</h3>
+      <tr><th>コンテナタイプ</th><td><%= @w_kind %></td></tr>
+      <tr><th>港</th><td><%= @w_place %></td></tr>
+      <tr><th>Week</th><td><%= @w_week %></td></tr>
+      <tr><th>可否状況</th><td><%= @a_result %></td></tr>
+      <tr><th>引き合い数</th><td><%= @pre_booking_result %></td></tr>
+      <tr><th>１週前</th><td><%= @a_day_ahead_result %></td></tr>
+      <tr><th>１週後</th><td><%= @a_day_behind_result %></td></tr>
+      </table>
+
+
+
+      
+      <table class = "bbb">
+      <% @booking.find_each do |p| %>
+        <tr><th>名前</th><td><%= p.email %></td></tr>
+        <tr><th>本数</th><td><%= p.volume %></td></tr>
+        <tr><th>可否判断状況</th><td><%= p.status %></td></tr>
+      <% end %>
+      </table>
+      <%= link_to "Bookingへ進む", {:action => "new", :week => @w_week, :place => @w_place, :kind => @w_kind}, {:class => "btn-square-pop"} %>
+    </div>
+
+
+
+
+
+
+<%= render 'shared/bottom' %>

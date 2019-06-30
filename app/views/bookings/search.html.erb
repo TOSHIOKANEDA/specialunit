@@ -1,15 +1,6 @@
-    <div class="header">
-      S p e c i a l - C o n t a i n e r
-    </div>
+<%= render 'shared/head' %>  
   
-    <div class="menu">
-      <ul><li><%= link_to "ログアウト", destroy_user_session_path, :method => :delete%></li></ul>
-    </div>
-
 <div class="contents">
-  <% if flash[:alert]%>
-    <%= flash[:alert]%>
-  <% end %>
   <%= form_tag('/bookings/result',method: :get) do %>
 
         <h3>
@@ -68,6 +59,4 @@
 
   
 
-<div class="footer">
-  <p>Copyright Toshio Kaneda 2019.</p>
-</div>
+<%= render 'shared/bottom' %>  

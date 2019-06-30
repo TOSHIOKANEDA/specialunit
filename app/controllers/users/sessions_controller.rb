@@ -33,6 +33,13 @@ class Users::SessionsController < Devise::SessionsController
     user = User.find(params[:id])
     user.update(user_params)
     user.save!
+    redirect_to '/bookings/admin'
+  end
+  
+  def destroy
+    @user = User.find(params[:id])
+    @user.destroy
+    redirect_to '/bookings/admin'
   end
   
   
