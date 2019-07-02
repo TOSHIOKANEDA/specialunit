@@ -1,11 +1,11 @@
 <%= render 'shared/head' %>
 
 <%= form_for(@booking, url: { action: :confirm }) do |f| %>
-  <div>
-    <div>
+  <div class = "centering_item">
+    <div class = centering_line_item>
     <strong>港</strong>
-    <% if @w_place.present? %>
-    <%= f.select :place, [@w_place] %>
+    <a><% if @w_place.present? %>
+    <%= f.select :place, [@w_place]%>
     <% else %>
        <%= f.select :place, 
         [["Tokyo", "Tokyo"], 
@@ -22,12 +22,12 @@
         ["Mizushima", "Mizushima"],
         ["Hiroshima", "Hiroshima"],
         ["Tokuyama", "Tokuyama"]] %>
-    <% end %>
+    <% end %></a>
     </div>
     
-    <div>
+    <div class = centering_line_item>
     <strong>コンテナタイプ</strong>
-    <% if @w_kind.present? %>
+    <a><% if @w_kind.present? %>
     <%= f.select :kind, [@w_kind] %>
     <% else %>
        <%= f.select :kind, 
@@ -35,45 +35,45 @@
         ["40OT", "40OT"],
         ["20FR", "20FR"],
         ["40FR", "40FR"]] %>
-    <% end %>
+    <% end %></a>
     </div>
     
-    <div>
+    <div class = centering_line_item>
     <strong>WEEK</strong>
-    <% if @w_week.present? %>
+    <a><% if @w_week.present? %>
     <%= f.select :week, [@w_week] %>
     <% else %>
        <%= f.select :week, options_for_select((1..52).to_a) %>
-    <% end %>
+    <% end %></a>
     </div>
     
-    <div>
+    <div class = centering_line_item>
     <strong>Volume</strong>
-       <%= f.select :volume, options_for_select((1..15).to_a) %>
+       <a><%= f.select :volume, options_for_select((1..15).to_a) %></a>
     </div>
     
-    <div>
+    <div class = centering_line_item>
     <strong>YEAR</strong>
-      <%= f.select :year, Date.today.year .. Date.today.year+1 %>
+      <a><%= f.select :year, Date.today.year .. Date.today.year+1 %></a>
     </div>
     
-    <div>
+    <div class = centering_line_item>
     <strong>リマーク</strong>
-      <%= f.text_field :main_column %>
-    </div>
-    
-    <div>
+      <a><%= f.text_field :main_column %></a>
     <strong>リマーク2</strong>
-      <%= f.text_field :sub_column %>
-    </div>
-
+      <a><%= f.text_field :sub_column %></a>
+  
         <%= f.hidden_field :status, :value => "waiting" %>
         <% tk = [*'A'..'Z', *0..9].shuffle[0..3].join %>
         <% tk_number = "TK-" + tk %>
         <%= f.hidden_field :tk_number, :value => "#{tk_number}" %>
         <%= f.hidden_field :email, :value => current_user.email %>
+    </div>
     
-      <%= f.submit '確認画面へ' %>
+    <div class = centering_line_item>
+      <%= f.submit '確認画面へ',  {:class => "btn-square-pop"} %>
+    </div>
+    
   </div>
 <% end %>
 

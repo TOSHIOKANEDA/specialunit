@@ -2,22 +2,51 @@
 
     <div class="contents">
       <div class="left_wrap">
-      <ul>
         <% if user_signed_in? %>
-        <li><a data-method="get" class="btn-square-pop" href='/users/edit.<%= current_user.id %>'>パスワードの変更</a></li>
-        <li><a class="btn-square-pop" href="/bookings/new">Booking</a></li>
-        <li><a class="btn-square-pop" href="/bookings/seek_booking">在庫確認</a></li>
-      </ul>
-      </div>
+      
+      <%= form_tag('/bookings/seek_booking_result', method: :get) do %>
+      <strong>港</strong>
+        <p><select name ="place" type="string">
+          <option value ="Tokyo">Tokyo</option>
+          <option value ="Yokohama">Yokohama</option>
+          <option value ="Nagoya">Nagoya</option>
+          <option value ="Yokkaichi">Yokkaichi</option>
+          <option value ="Osaka">Osaka</option>
+          <option value ="Kobe">Kobe</option>
+          <option value ="Hiroshima">Hiroshima</option>
+          <option value ="Mizushima">Mizushima</option>
+          <option value ="Tokuyama">Tokuyama</option>
+          <option value ="Moji">Moji</option>
+          <option value ="Hakata">Hakata</option>
+        </select></p>
+
+        <strong>コンテナタイプ</strong>
+        <p><select name="kind" type="string"></p>
+          <option value ="20FR">20FR</option>
+          <option value ="40FR">40FR</option>
+          <option value ="20OT">20OT</option>
+          <option value ="40OT">40OT</option>
+        </select></p>
+        
+        <strong>WEEK</strong>
+        <p><select name="week" type="integer">
+            <% 52.times do |num| %>
+               <option value ="<%= num + 1 %>"><%= num + 1 %></option>
+            <% end %>
+          </select></p>
+    
+      <input type="submit" value ="在庫確認からBooking" class = "btn-square-pop">
+      <% end %>
+  </div>
     
       <div class="right_wrap">
         <ul>
+        <a class="btn-square-pop" href="/bookings/new">すぐ Booking</a>
         <% if current_user.admin? %>
-          <p><a class="btn-square-pop2" href="/bookings/search">在庫可否</a></p>
-          <p><a class="btn-square-pop2" href="/acceptings/new">在庫ありませんの登録・削除ページ</a></p>
-          <p><a class="btn-square-pop2" href="/acceptings/show">現在登録済みの在庫ありませんを確認するページ</a></p>
-          <p><a class="btn-square-pop2" href="/bookings/search">間違えて変更した人の為に直してあげるページ</a></p>
-          <p><a class="btn-square-pop2" href="/bookings/admin">担当者を変更するページ</a></p>
+          <p><a class="btn-square-pop2" href="/bookings/search">申請内容更新</a></p>
+          <p><a class="btn-square-pop2" href="/acceptings/new">在庫ありませんの登録・削除ページ</a><工事中></p>
+          <p><a class="btn-square-pop2" href="/acceptings/show">現在登録済みの在庫ありませんを確認するページ</a><工事中></p>
+          <p><a class="btn-square-pop2" href="/bookings/admin">担当者を変更するページ</a><工事中></p>
         <% end %>
         <% else %>
         <li><a href="/users/sign_up">新規登録</a></li>

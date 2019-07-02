@@ -1,33 +1,32 @@
 <%= render 'shared/head' %>  
   
-<div class="contents">
   <%= form_tag('/bookings/result',method: :get) do %>
 
-        <h3>
-      <label for="custom-select-1b">b</label>
-      </h3><br>
-        <select name="kind" id="custom-select-1b" type="string" class="custom-select">
+  <div class = "centering_item">
+    <div class = centering_line_item>
+      <strong>コンテナタイプ</strong>
+        <select name="kind" type="string">
           <option value ="">ALL</option>
           <option value ="20FR">20FR</option>
           <option value ="40FR">40FR</option>
           <option value ="20OT">20OT</option>
           <option value ="40OT">40OT</option>
-        </select><br>
-        
-        <h3>  
-        <label for="custom-select-1b">c</label>
-        </h3><br>
-          <select name="week" id="custom-select-1b" type="integer" class="custom-select">
+        </select>
+    </div>
+    
+     <div class = centering_line_item>
+       <strong>WEEK</strong>
+          <select name="week" type="integer">
             <option value ="">ALL</option>
             <% 52.times do |num| %>
                <option value ="<%= num + 1 %>"><%= num + 1 %></option>
             <% end %>
-          </select><br>
+          </select>
+      </div>
   
-      <h3>
-      <label for="custom-select-1b">a</label>
-      </h3><br>
-        <select name ="place" id="custom-select-1b" type="string" class="custom-select">
+     <div class = centering_line_item>
+       <strong>港</strong>
+        <select name ="place" type="string">
           <option value ="">ALL</option>
           <option value ="Tokyo">Tokyo</option>
           <option value ="Yokohama">Yokohama</option>
@@ -40,20 +39,20 @@
           <option value ="Tokuyama">Tokuyama</option>
           <option value ="Moji">Moji</option>
           <option value ="Hakata">Hakata</option>
-        </select><br>
+        </select>
+      </div>
         
-              <h3>
-      <label for="custom-select-1b">d</label>
-      </h3><br>
-        <select name ="status" id="custom-select-1b" type="string" class="custom-select">
+    <div class = centering_line_item>
+      <strong>ステータス</strong>
+        <select name ="status" type="string">
         <option value ="waiting">新規申請</option>
         <option value ="confirmed">在庫OK</option>
         <option value ="rejected">在庫ありません！</option>
         <option value ="waiting_list">キャンセル待ち</option>
-        </select><br>
+        </select>
+    </div>
 
-
-    <input type="submit" value ="確認画面へ">
+    <input type="submit" value ="確認画面へ" class = "btn-square-pop2">
   <% end %>
 </div>
 

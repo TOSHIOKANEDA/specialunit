@@ -6,5 +6,8 @@
       <ul>
         <li>あなたは<%=current_user.email %>さんです。</li>
         <li><%= link_to "ログアウト", destroy_user_session_path, :method => :delete, class: "btn-square-pop"%></li>
+        <% if user_signed_in? %>
+        <li><a data-method="get" class="btn-square-pop" href='/users/edit.<%= current_user.id %>'>パスワードの変更</a></li>
+        <%end%>
       </ul>
     </div>

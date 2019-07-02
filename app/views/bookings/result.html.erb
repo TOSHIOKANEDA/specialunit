@@ -1,17 +1,21 @@
 <%= render 'shared/head' %> 
 
+<table class = "bbb">
+  <h3>一覧</h3>
+  <div class="button_right"><button><%= link_to "ジャッジ検索に戻る", "/bookings/search" , {:class => "btn-square-pop2"}%></button></div>
+  <th>ステータス</th><th>港</th><th>本数</th><th>WEEK</th><th>コンテナタイプ</th><th>名前</th><th></th>
 <% @results.each do |r| %>
-<p><%= r.id %></p>
-<p><%= r.status %></p>
-<p><%= r.place %></p>
-<p><%= r.volume %></p>
-<p><%= r.email %></p>
-<p><%= r.week %></p>
-<p><%= r.kind %></p>
-<p><%= link_to 'ステータス更新', "/bookings/#{r.id}/edit", method: :patch %></p>
-<p>'----------'</p>
+<tr><td><%= r.status %></td>
+<td><%= r.place %></td>
+<td><%= r.volume %></td>
+<td><%= r.week %></td>
+<td><%= r.kind %></td>
+<td><%= r.email %></td>
+<td><%= link_to 'ステータス更新', "/bookings/#{r.id}/edit", method: :patch, :class => "btn-square-pop2" %></td></tr>
 <% end %>
+</table>
 
-<p><%= link_to "ジャッジ検索に戻る", "/bookings/search" %></p>
 
 <%= render 'shared/bottom' %> 
+
+

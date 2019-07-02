@@ -20,10 +20,8 @@ patch 'bookings/:id/edit' => 'bookings#edit'
   patch 'users/:id/edit' => 'users/sessions#update'
   delete 'users/:id' => 'users/sessions#destroy', as: 'destroy_session_user'
   get 'users/:id'  =>  'users/sessions#destroy'
-  get 'bookings/seek_booking' => 'bookings#seek_booking'
   get 'bookings/seek_booking_result' => 'bookings#seek_booking_result'
   delete 'bookings/:id' => 'bookings#destroy', as: 'destroy_booking'
-  get 'bookings/:id' => 'bookings#destroy'
  
 
   

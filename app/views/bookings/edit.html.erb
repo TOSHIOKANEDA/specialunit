@@ -1,30 +1,42 @@
  <%= render 'shared/head' %> 
  
- <h1>EDIT画面</h1>
+ <h1>更新画面</h1>
  
+<div class = "centering_item">
+  <div class = centering_line_item>
   <%= form_tag("/bookings/#{@booking.id}", method: :patch ) do %>
-    <p>本数を訂正<select name="volume" id="custom-select-1b" type="integer" class="custom-select">
+    <strong>本数を訂正</strong>
+    <select name="volume" type="integer">
         <% 10.times do |num| %>
           <option value ="<%= num + 1 %>"><%= num + 1 %></option>
         <% end %>
-        </select></p>
-    <p>年を訂正<select name="year" id="custom-select-1b" type="integer" class="custom-select">
+    </select>
+  </div>
+  
+  <div class = centering_line_item>
+    <strong>年を訂正<strong>
+      <select name="year" type="integer">
         <% d = Date.today %>
         <% @year = d.year %>
         <option value ="<%= @year %>"><%= @year %></option>
         <option value ="<%= @year + 1 %>"><%= @year + 1 %></option>
-        </select></p>
+      </select>
+  </div>
         
-        <p>ステータスを更新<select name="status" id="custom-select-1b" type="integer" class="custom-select">
+  <div class = centering_line_item>
+    <strong>ステータスを更新</strong>
+      <select name="status" type="integer">
         <option value ="waiting">新規申請</option>
         <option value ="confirmed">在庫OK</option>
         <option value ="rejected">在庫ありません！</option>
         <option value ="waiting_list">キャンセル待ち</option>
-        </select></p>
-    
-    <p><input type="submit" value="確定する"></p>
+      </select>
+  </div>  
+  
+  <input type="submit" value="確定する" class = "btn-square-pop2">
 
   
 <% end %>
       
+</div>
 <%= render 'shared/bottom' %>

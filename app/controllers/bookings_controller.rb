@@ -94,7 +94,11 @@ def result
       
   else
     if b.present?
+      if c.present?
+      @results = kind_condition.where(week: c)
+    else
       @results = kind_condition
+      end
     elsif c.present?
       @results = week_condition
     else

@@ -46,13 +46,8 @@ html {
 
 .contents {
     height: calc(100vh - 140px);
-    background-color: #696969;
 }
 
-
-.contents ul {
-    line-height: 70px
-}
 
 .main-contents {
     width: 70%;
@@ -131,73 +126,47 @@ html {
   float: left; /*左にフロート配置*/
 }
 
+.button_center{
+   text-align:center;
+}
+
+.button_right{
+   text-align:right;
+}
+
 .right_wrap {
   width: 49%; /*右カラム幅設定*/
   float: right; /*右のフロート配置*/
 }
 
-// ここselectのCSS
-
-.cp_ipselect {
-  overflow: hidden;
-  width: 20%;
-  margin: 2em auto;
-  text-align: center;
-}
-.cp_ipselect select {
-  width: 100%;
-  padding-right: 1em;
-  cursor: pointer;
-  text-indent: 0.01px;
-  text-overflow: ellipsis;
-  border: none;
-  outline: none;
-  background: transparent;
-  background-image: none;
-  box-shadow: none;
-  -webkit-appearance: none;
-  appearance: none;
-}
-.cp_ipselect select::-ms-expand {
-  display: none;
-}
-.cp_ipselect.cp_sl04 {
-  position: static;
-  border-radius: 2px;
-  border: 2px solid #da3c41;
-  border-radius: 10px;
-  background: #ffffff;
-}
-.cp_ipselect.cp_sl04::before {
-  position: absolute;
-  top: 0.8em;
-  right: 0.8em;
-  width: 0;
-  height: 0;
-  padding: 0;
-  content: '';
-  border-left: 6px solid transparent;
-  border-right: 6px solid transparent;
-  border-top: 6px solid #da3c41;
-  pointer-events: none;
-}
-.cp_ipselect.cp_sl04 select {
-  padding: 10px 38px 8px 8px;
-  color: #da3c41;
+.right_wrap ul {
+    line-height: 90px
 }
 
-// ここまで
 
-// seek_booking_resultの位置
+// new, seek_booking_resultの位置
 
  
 .centering_item {
     width: 500px;               /* 幅指定 */
     height: 90px;               /* 高さ指定 */
     margin:  0 auto;            /* 中央寄せ */
+    line-height: 1.8em;
 }
 
 // ここまで
+
+.centering_line_item a {
+    margin-bottom: 20px;
+  	padding: 7px 20px 7px 10px;
+  	
+  	line-height: 1.5em;
+  	border-radius: 3px;
+  	border: none;
+  	background-repeat: no-repeat;
+  	background-size: 12px 10px;
+  	background-position: right 10px center;
+}
 
 // seek_booking_resultのテーブルaaa
 
@@ -234,6 +203,64 @@ table.aaa tr:nth-child(odd){
 // ここまで
 
 // seek_booking_resultのテーブルbbb
+table.bbb{
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 5;
+}
 
-  
+table.bbb th,table td{
+  position: relative;
+  padding: 15px 15px;
+  width: 50% 50%;
+  text-align: center;
+}
+
+table.bbb tr:nth-child(odd){
+  background-color: #eee
+}
+
+
+// ここまで
+
+.centering_line_item {
+    line-height: 60px;
+    width: 2500px;
+}
+
+// Newのテキストエリア
+input[type="text"],
+textarea {
+    padding: 0.1em;
+    outline: none;
+    border: 1px solid #DDD;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    font-size: 16px;
+}
+textarea {
+    width: 80px;
+}
+
+
+// ここまで
+
+// セレクトタグ
+select {
+	margin-bottom: 20px;
+	padding: 7px 20px 7px 10px;
+	
+	line-height: 1.5em;
+	border-radius: 3px;
+	border: none;
+	background-repeat: no-repeat;
+	background-size: 12px 10px;
+	background-position: right 10px center;
+	background-color: #bddfff;
+}
+// ここまで
+
+.field a {
+  background-color: #bddfff;
 }

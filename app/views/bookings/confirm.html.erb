@@ -1,72 +1,25 @@
 <%= render 'shared/head' %>  
 
 <%= form_for @booking, :url => bookings_done_path do |f| %>
-  <div>
-    <h2>メッセージ確認</h2>
-    <div>
-      <strong>港</strong>
-      <p>
-        <%= f.hidden_field :place %>
-        <%= @booking.place %>
-      </p>
-    </div>
-    
-    <div>
-      <strong>コンテナタイプ</strong>
-      <p>
-        <%= f.hidden_field :kind %>
-        <%= @booking.kind %>
-      </p>
-    </div>
-          
-    <div>
-      <strong>WEEK</strong>
-      <p>
-        <%= f.hidden_field :week %>
-        <%= @booking.week %>
-      </p>
-    </div>
-
-    <div>
-      <strong>YEAR</strong>
-      <p>
-        <%= f.hidden_field :year %>
-        <%= @booking.year %>
-      </p>
-    </div>
-   
-    <div>
-      <strong>VOLUME</strong>
-      <p>
-        <%= f.hidden_field :volume %>
-        <%= @booking.volume %>
-      </p>
-    </div>
-
-    <div>
-      <strong>リマーク</strong>
-      <p>
-        <%= f.hidden_field :main_column %>
-        <%= @booking.main_column %>
-      </p>
-    </div>
-    
-              
-    <div>
-      <strong>リマーク２</strong>
-      <p>
-        <%= f.hidden_field :sub_column %>
-        <%= @booking.sub_column %>
-      </p>
-    </div>
-    
-        <%= f.hidden_field :status%>
-        <%= f.hidden_field :tk_number%>
-        <%= f.hidden_field :email%>
-
-
-      <%= f.submit '戻る', name: 'back' %>
-      <%= f.submit '送信する' %>
+  <div class="centering_item">
+    <table class ="aaa">
+    <h2>確認</h2>
+    <tr><th>港</th><td> <%= f.hidden_field :place %><%= @booking.place %></td></tr>
+    <tr><th>コンテナタイプ</th><td> <%= f.hidden_field :kind %><%= @booking.kind %></td></tr>
+    <tr><th>WEEK</th><td> <%= f.hidden_field :week %><%= @booking.week %></td></tr>
+    <tr><th>YEAR</th><td> <%= f.hidden_field :year %><%= @booking.year %></td></tr>
+    <tr><th>VOLUME</th><td> <%= f.hidden_field :volume %><%= @booking.volume %></td></tr>
+    <tr><th>リマーク</th><td> <%= f.hidden_field :main_column %><%= @booking.main_column %></td></tr>
+    <tr><th>リマーク２</th><td> <%= f.hidden_field :sub_column %><%= @booking.sub_column %></td></tr>
+    </table>
+      <%= f.hidden_field :status%>
+      <%= f.hidden_field :tk_number%>
+      <%= f.hidden_field :email%>
+      
+      <div class="button_center">
+      <button><%= f.submit '戻る', name: 'back', :class=>"btn-square-pop" %>
+      <%= f.submit '送信する', :class=>"btn-square-pop" %></button>
+      </div>
   </div>
 <% end %>
 
