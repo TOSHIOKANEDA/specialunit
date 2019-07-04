@@ -25,5 +25,5 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
-/specialunit/config/environments/development.rb
-/specialunit/app/mailers/booking_mailer.rb
+development.rb
+booking_mailer.rb

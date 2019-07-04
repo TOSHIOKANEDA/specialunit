@@ -36,7 +36,7 @@ class BookingMailer < ApplicationMailer
     
     end
     
-    
+    abc
     
     def admin_email
     a = User.find_by(admin: 1)
