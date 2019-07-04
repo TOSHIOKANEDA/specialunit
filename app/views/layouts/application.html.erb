@@ -16,6 +16,7 @@
       <% type = 'error' if type == 'alert' %>
       <script>
         toastr['<%= type %>']('<%= msg %>');
+        toastr.options.timeOut = 3000;
       </script>
     <% end %>
     <%= yield %>

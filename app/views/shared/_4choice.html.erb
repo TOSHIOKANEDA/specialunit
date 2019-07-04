@@ -1,0 +1,41 @@
+  
+  <strong>港</strong>
+        <p><select name ="place" type="string">
+          <option value ="Tokyo">Tokyo</option>
+          <option value ="Yokohama">Yokohama</option>
+          <option value ="Nagoya">Nagoya</option>
+          <option value ="Yokkaichi">Yokkaichi</option>
+          <option value ="Osaka">Osaka</option>
+          <option value ="Kobe">Kobe</option>
+          <option value ="Hiroshima">Hiroshima</option>
+          <option value ="Mizushima">Mizushima</option>
+          <option value ="Tokuyama">Tokuyama</option>
+          <option value ="Moji">Moji</option>
+          <option value ="Chiba">Chiba</option>
+          <option value ="Kawasaki">Kawasaki</option>
+          <option value ="Shimizu">Shimizu</option>
+          <option value ="Hakata">Hakata</option>
+        </select></p>
+  
+        <strong>コンテナタイプ</strong>
+        <p><select name="kind" type="string"></p>
+          <option value ="20FR">20FR</option>
+          <option value ="40FR">40FR</option>
+          <option value ="20OT">20OT</option>
+          <option value ="40OT">40OT</option>
+        </select></p>
+        
+        <strong>WEEK</strong>
+        <p><select name="week" type="integer">
+            <% 52.times do |num| %>
+               <option value ="<%= num + 1 %>"><%= num + 1 %></option>
+            <% end %>
+          </select></p>
+          
+        <strong>YEAR</strong>  
+        <p><select name="year"  type="integer">
+        <% d = Date.today %>
+        <% @year = d.year %>
+        <option value ="<%= @year %>"><%= @year %></option>
+        <option value ="<%= @year + 1 %>"><%= @year + 1 %></option>
+        </select></p>

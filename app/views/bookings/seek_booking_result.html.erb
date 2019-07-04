@@ -7,14 +7,15 @@
         <h3>あなたが選択したのは下の感じです</h3>
         <tr><th>コンテナタイプ</th><td><%= @w_kind %></td></tr>
         <tr><th>港</th><td><%= @w_place %></td></tr>
-        <tr><th>Week</th><td><%= @w_week %></td></tr>
+        <tr><th>WEEK</th><td><%= @w_week %></td></tr>
+        <tr><th>YEAR</th><td><%= @w_year %></td></tr>
         <tr><th>可否状況</th><td><%= @a_result %></td></tr>
         <tr><th>引き合い数</th><td><%= @pre_booking_result %></td></tr>
         <tr><th>１週前</th><td><%= @a_day_ahead_result %></td></tr>
         <tr><th>１週後</th><td><%= @a_day_behind_result %></td></tr>
         </table>
         <div class="button_center">
-        <button><%= link_to "Bookingへ進む", {:action => "new", :week => @w_week, :place => @w_place, :kind => @w_kind}, {:class => "btn-square-pop"} %></button>
+        <button><%= link_to "Bookingへ進む", {:action => "new", :week => @w_week, :place => @w_place, :kind => @w_kind, :year => @w_year}, {:class => "btn-square-pop"} %></button>
         </div>
       </div>
 

@@ -1,9 +1,12 @@
 <%= render 'shared/head' %>
 
+<table class = "bbb">
+  <h3>一覧</h3>
+<th>名前</th><th></th>
 <% @users.each do |r| %>
-<p><%= r.email %></p>
-<p><%= link_to '担当者をこの人の情報を更新する', "/users/#{r.id}/edit", method: :get %></p>
-<p>'----------'</p>
+<tr><td><%= r.email %></td>
+<td><%= link_to '更新', "/users/#{r.id}/edit", method: :get, :class => "btn-square-pop2"%></td></tr>
 <% end %>
+</table>
 
 <%= render 'shared/bottom' %> 

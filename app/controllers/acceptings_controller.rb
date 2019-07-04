@@ -18,7 +18,7 @@ end
 def destroy
   @accepting = Accepting.find(params[:id])
   @accepting.destroy
-  redirect_to action: 'show'
+  redirect_to "/acceptings/new", alert: "削除しました"
 end
 
 private

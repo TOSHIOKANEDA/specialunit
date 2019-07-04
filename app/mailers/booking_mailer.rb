@@ -17,10 +17,10 @@ class BookingMailer < ApplicationMailer
     
      @status = status_update_check
 
-    mail from: '"TK在庫確認だぉ" <レールズC@gmail.com>',
-    to: 'レールズC@gmail.com',
+    mail from: '"TK在庫確認だぉ" <camp1of1techC@gmail.com>',
+    to: 'camp1of1tech@gmail.com',
     cc: ["#{admin_email}","#{booking.email}"],
-    subject: "[" + booking.tk_number + "]" + booking.email + 'さん / ' + booking.place + '/' + booking.kind + '/ '+ booking.volume.to_s + 
+    subject: booking.email + 'さん / ' + booking.place + '/' + booking.kind + '/ '+ booking.volume.to_s + 
             'について' + status_update_check
     
     end
@@ -28,10 +28,10 @@ class BookingMailer < ApplicationMailer
     def send_when_done(booking)
     @booking = booking
 
-    mail from: '"TK在庫確認だぉ" <レールズC@gmail.com>',
-    to: 'レールズC@gmail.com',
-    cc: ["#{admin_email}","#{booking.email}"],
-    subject: "[" + booking.tk_number + "]" + booking.email + 'さん / ' + booking.place + '/' + booking.kind + '/ '+ booking.volume.to_s + 
+    mail from: '"TK在庫確認だぉ" <camp1of1tech@gmail.com>',
+    to: 'camp1of1tech@gmail.com',
+    cc: ["#{admin_email}","#{booking.email}","#{booking.sub_column}"],
+    subject: booking.email + 'さん / ' + booking.place + '/' + booking.kind + '/ '+ booking.volume.to_s + 
             'についての新規問い合わせ'
     
     end

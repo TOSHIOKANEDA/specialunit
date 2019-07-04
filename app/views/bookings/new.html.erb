@@ -48,20 +48,26 @@
     </div>
     
     <div class = centering_line_item>
+    <strong>YEAR</strong>
+    <a><% if @w_year.present? %>
+      <%= f.select :year, [@w_year] %>
+    <% else %>
+        <%= f.select :year, Date.today.year .. Date.today.year+1 %>
+    <% end %></a>
+    </div>
+    
+    <div class = centering_line_item>
     <strong>Volume</strong>
        <a><%= f.select :volume, options_for_select((1..15).to_a) %></a>
     </div>
     
-    <div class = centering_line_item>
-    <strong>YEAR</strong>
-      <a><%= f.select :year, Date.today.year .. Date.today.year+1 %></a>
-    </div>
+
     
     <div class = centering_line_item>
     <strong>リマーク</strong>
-      <a><%= f.text_field :main_column %></a>
-    <strong>リマーク2</strong>
-      <a><%= f.text_field :sub_column %></a>
+      <a><%= f.text_field :main_column, :placeholder => "船名、ETAなど" %></a>
+    <strong>ラインマスター</strong>
+      <a><%= f.text_field :sub_column, :placeholder => "●●xx@wanhai.com"  %></a>
   
         <%= f.hidden_field :status, :value => "waiting" %>
         <% tk = [*'A'..'Z', *0..9].shuffle[0..3].join %>

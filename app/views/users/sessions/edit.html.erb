@@ -1,14 +1,30 @@
 <%= render 'shared/head' %>  
 
-<p>ユーザの情報を変更します</p>
 
+<div class = "centering_item">
 
- <%= form_with model: @user, method: :patch, local: true do |form| %>
-  <p><%= form.text_field :email %></p>
-<p><%= form.select :admin, [["担当", "1"], ["一般", "0"]] %></p>
- <%= form.submit %>
-<% end %>
+  <div class = centering_line_item>
+  <a><% user = User.find(params[:id])%>
+   <strong>”<%= user.email %>”さん更新</strong>
+   <%= form_with model: @user, method: :patch, local: true do |f| %>
+   <% user.email %>
+  </div>
+  
+  <div class = centering_line_item>担当者変更
+   <%= f.select :admin, [["担当", "1"], ["一般", "0"]] %></a>
+  
+  </div>
+  
+  <div class="button_center">
+   <button><%= f.submit '保存', {:class => "btn-square-pop2"} %></button>
+  </div>
+   <% end %>
 
- <%= link_to 'USERの削除', destroy_session_user_path %>
+ <div class = button_center>
+  <button><%= link_to 'USERの削除', destroy_session_user_path, :class=>"btn-square-pop2"%></button>
+ </div> 
+ 
+</div> 
+ 
  
  <%= render 'shared/bottom' %>

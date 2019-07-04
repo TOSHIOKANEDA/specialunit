@@ -6,8 +6,8 @@
   <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <% f.label :email %><br />
+    <% f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
@@ -15,8 +15,8 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :password %> <i>(新しく設定したパスワード)</i><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
+    <%= f.label :password %> <i>(新しく設定したいパスワード)</i><br />
+    <a><%= f.password_field :password, autocomplete: "new-password", :placeholder => "パスワード入力" %></a>
     <% if @minimum_password_length %>
       <br />
       <em><%= @minimum_password_length %> 文字以上の英数字</em>
@@ -25,12 +25,12 @@
 
   <div class="field">
     <%= f.label :password_confirmation %> <i>(新しく設定したパスワード再入力)</i><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    <a><%= f.password_field :password_confirmation, autocomplete: "new-password", :placeholder => "パスワード再入力" %></a>
   </div>
 
   <div class="field">
     <%= f.label :current_password %> <i>(古いパスワードを入力してください)</i><br />
-    <%= f.password_field :current_password, autocomplete: "current-password" %>
+    <a><%= f.password_field :current_password, autocomplete: "current-password", :placeholder => "今までのパスワードを入力" %></a>
   </div>
 
   <div class="button_center">

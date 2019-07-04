@@ -58,15 +58,6 @@ html {
     padding-top: 4rem;
 }
 
-.custom-select {
-    width: 90px;
-    padding: 10px;
-    margin: 15px;
-    border-radius: 8px;
-    background-color: #afa58d
-    
-}
-
 
 .footer {
     position: fixed;
@@ -124,6 +115,7 @@ html {
 .left_wrap {
   width: 49%; /*左カラム幅設定*/
   float: left; /*左にフロート配置*/
+  padding-left: 20px;
 }
 
 .button_center{
@@ -181,7 +173,7 @@ table.aaa{
 table.aaa th:after{
   display: block;
   content: "";
-  width: 15px;
+  width: 10px;
   height: 2px;
   background-color: #333;
   position: absolute;
@@ -238,9 +230,12 @@ textarea {
     -moz-border-radius: 3px;
     border-radius: 3px;
     font-size: 16px;
+    
 }
+
 textarea {
     width: 80px;
+    border: 0.1px solid #EE0000;
 }
 
 
@@ -250,17 +245,14 @@ textarea {
 select {
 	margin-bottom: 20px;
 	padding: 7px 20px 7px 10px;
-	
 	line-height: 1.5em;
-	border-radius: 3px;
-	border: none;
+	border: 0.1px solid #EE0000;
 	background-repeat: no-repeat;
 	background-size: 12px 10px;
-	background-position: right 10px center;
 	background-color: #bddfff;
 }
 // ここまで
 
 .field a {
-  background-color: #bddfff;
+    border: 0.1px solid #EE0000;
 }

@@ -1,5 +1,9 @@
 
 <%= @booking.email %>さん
+<% if @booking.status = "confirmed" %>
+<h3>TK番号:<%= @booking.tk_number %></h3>
+<p>Bookingリマークに忘れずに書いてね</p>
+<%end%>
 <p>内容: <%= @status %></p>
 <p>本数：<%= @booking.volume %></p>
 <p>ピック予定WEEK：<%= @booking.week %></p>

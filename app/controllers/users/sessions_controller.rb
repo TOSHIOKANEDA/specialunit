@@ -39,7 +39,7 @@ class Users::SessionsController < Devise::SessionsController
   def destroy
     @user = User.find(params[:id])
     @user.destroy
-    redirect_to '/bookings/admin'
+    redirect_to "/", alert: "削除しました"
   end
   
   

@@ -17,6 +17,7 @@ def seek_booking_result
       @w_place = booking_params[:place]
       @w_kind = booking_params[:kind]
       @w_week = booking_params[:week]
+      @w_year = booking_params[:year]
       
       
   
@@ -25,7 +26,7 @@ def seek_booking_result
       @pre_booking = Booking.where(place: @w_place, kind: @w_kind, week: @w_week).pluck(:volume).compact.inject(:+)
       @a_day_behind = Accepting.where('kind=? and place=? and week=?', @w_kind, @w_place, (@w_week.to_i + 1))
       @a_day_ahead = Accepting.where('kind=? and place=? and week=?', @w_kind, @w_place, (@w_week.to_i - 1))
-      no = "在庫薄"
+      no = "在庫薄！"
       yes = "良好"
       no_idea = "良好（年末年始期間ターミナルと要確認）"
       ban_week = booking_params[:week] == 1 || booking_params[:week]== 2 || booking_params[:week] == 52
@@ -105,6 +106,7 @@ def result
       @results = status_condition
     end
   end
+  @results = Booking.paginate(page: params[:page], per_page: 10)
   redirect_to({action: 'search'}, alert: "その条件ではなし！") if @results.blank?
   
 end
@@ -120,16 +122,17 @@ def update
   BookingMailer.send_when_update(booking).deliver_now
 end
 
-def destroy
-  @booking = Booking.find(params[:id])
-  @booking.destroy
-  redirect_to action: 'new'
-end
+# def destroy
+#   @booking = Booking.find(params[:id])
+#   @booking.destroy
+#   redirect_to action: 'new'
+# end
 
 def new
     @w_place = booking_params[:place]
     @w_kind = booking_params[:kind]
     @w_week = booking_params[:week]
+    @w_year = booking_params[:year]
     @booking = Booking.new
 end
  

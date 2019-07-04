@@ -1,15 +1,22 @@
 <%= render 'shared/head' %> 
 
-<% @accepting.each do |r| %>
-<% r.id %>
-<p><%= r.kind %></p>
-<p><%= r.place %></p>
-<p><%= r.week %></p>
-<p><%= r.year %></p>
-<p><%= link_to 'ステータス削除', "/acceptings/#{r.id}", method: :delete %></p>
-<p>'----------'</p>
-<% end %>
 
-<p><%= link_to "在庫ありません登録・削除に戻る", "/acceptings/new" %></p>
+  <table class ="bbb">
+    <h2>在庫薄一覧</h2>
+      <th>港</th><th>コンテナタイプ</th><th>WEEK</th><th>YEAR</th><th>削除</th>
+        <% @accepting.each do |r| %>
+        <tr><td><%= r.place %></td>
+        <td><%= r.kind %></td>
+        <td><%= r.week %></td>
+        <td><%= r.year %></td>
+        <td><%= link_to 'ステータス削除', "/acceptings/#{r.id}", method: :delete ,:class => "btn-square-pop2"%></td></tr>
+        <% end %>
+  </table>
+
+
+      <div class="button_center">
+      <button><%= link_to "在庫薄設定に戻る", "/acceptings/new",{:class => "btn-square-pop2"} %></button>
+      </div>
 
 <%= render 'shared/bottom' %> 
+
