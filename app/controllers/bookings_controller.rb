@@ -7,7 +7,7 @@ end
 
 def admin
 redirect_to action: :index if current_user.admin.blank?
-@users = User.all
+@users = User.paginate(page: params[:page], per_page: 10)
 end
 
 def seek_booking
@@ -73,12 +73,14 @@ def result
   b = params[:kind]
   c = params[:week]
   d = params[:status]
+
   
-  place_condition = Booking.where(place: a).where(status: d)
-  kind_condition = Booking.where(kind: b).where(status: d)
-  all_condition = Booking.where(place: a).where(kind: b).where(week: c).where(status: d)
-  status_condition = Booking.where(status: d)
-  week_condition = Booking.where(week: c)
+  place_condition = Booking.where(place: a).where(status: d).paginate(page: params[:page], per_page: 10)
+  kind_condition = Booking.where(kind: b).where(status: d).paginate(page: params[:page], per_page: 10)
+  all_condition = Booking.where(place: a).where(kind: b).where(week: c).where(status: d).paginate(page: params[:page], per_page: 10)
+  status_condition = Booking.where(status: d).paginate(page: params[:page], per_page: 10)
+  week_condition = Booking.where(week: c).paginate(page: params[:page], per_page: 10)
+  
 
   if a.present?
     if b.present?
@@ -106,7 +108,7 @@ def result
       @results = status_condition
     end
   end
-  @results = Booking.paginate(page: params[:page], per_page: 10)
+  
   redirect_to({action: 'search'}, alert: "その条件ではなし！") if @results.blank?
   
 end

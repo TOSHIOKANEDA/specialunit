@@ -29,6 +29,8 @@ ActiveRecord::Schema.define(version: 2019_06_19_153504) do
     t.integer "week"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string "port"
+    t.string "type"
     t.string "place"
     t.string "kind"
     t.string "email"
