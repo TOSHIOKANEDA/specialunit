@@ -8,6 +8,8 @@ end
 def admin
 redirect_to action: :index if current_user.admin.blank?
 @users = User.paginate(page: params[:page], per_page: 10)
+@non_login_users = @users.reject{|user| user.id == current_user.id }
+
 end
 
 def seek_booking

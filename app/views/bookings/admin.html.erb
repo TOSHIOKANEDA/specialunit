@@ -4,7 +4,7 @@
   <h3>一覧</h3>
   <%= will_paginate @users %>
 <th>名前</th><th></th>
-<% @users.each do |r| %>
+<% @non_login_users.each do |r| %>
 <tr><td><%= r.email%></td>
 <td><%= link_to '更新', "/users/#{r.id}/edit", method: :get, :class => "btn-square-pop2"%></td></tr>
 
