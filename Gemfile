@@ -73,3 +73,4 @@ gem 'toastr-rails', '~> 1.0', '>= 1.0.3'
 gem 'kaminari', '~> 0.17.0'
 gem 'will_paginate'
 gem 'rails_12factor'
+gem 'whenever', require: false

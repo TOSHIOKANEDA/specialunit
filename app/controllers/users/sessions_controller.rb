@@ -32,7 +32,13 @@ class Users::SessionsController < Devise::SessionsController
   def update
     user = User.find(params[:id])
     user.update(user_params)
-    user.save!
+    if user.admin = "1"
+      users = User.where(admin: "1")
+      users.update_all(admin: "0")
+      user.update(admin: "1")
+      user.save!
+    end
+    
     redirect_to '/bookings/admin'
   end
   

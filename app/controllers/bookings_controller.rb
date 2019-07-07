@@ -124,10 +124,10 @@ def update
   BookingMailer.send_when_update(booking).deliver_now
 end
 
-# def destroy
-#   @booking = Booking.find(params[:id])
-#   @booking.destroy
-#   redirect_to action: 'new'
+# def annual_delete
+#   Booking.where(year: Date.today.year-1).destroy_all
+#   BookingMailer.send_when_destroy.deliver_now
+#   redirect_to action: :index
 # end
 
 def new
