@@ -91,8 +91,9 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+  
   config.action_mailer.raise_delivery_errors = true
-  config.action_mailer.default_url_options = { protocol: 'https' , host: 'e75bb27deebc464eb0f5925079bec3c0.vfs.cloud9.ap-southeast-1.amazonaws.com' }
+  config.action_mailer.default_url_options = { protocol: 'https' ,  :host => 'whispering-tor-36194.herokuapp.com' }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
    address:              'smtp.gmail.com',
@@ -103,6 +104,5 @@ Rails.application.configure do
    authentication:       'plain',
    enable_starttls_auto:  true
   }
-  
   
 end
