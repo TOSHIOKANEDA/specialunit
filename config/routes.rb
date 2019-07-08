@@ -21,7 +21,6 @@ patch 'bookings/:id/edit' => 'bookings#edit'
   delete 'users/:id' => 'users/sessions#destroy', as: 'destroy_session_user'
   get 'users/:id'  =>  'users/sessions#destroy'
   get 'bookings/seek_booking_result' => 'bookings#seek_booking_result'
-  delete 'bookings/annual_delete'  =>  'bookings#annual_delete'
  
 
   
