@@ -21,7 +21,7 @@ def seek_booking_result
       @w_week = booking_params[:week]
       @w_year = booking_params[:year]
       
-      
+  
   
       @booking = Booking.where(place: @w_place, kind: @w_kind, week: @w_week)  
       @a = Accepting.where(place: @w_place, kind: @w_kind, week: @w_week)  
