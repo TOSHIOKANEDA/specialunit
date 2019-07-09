@@ -74,3 +74,4 @@ gem 'kaminari', '~> 0.17.0'
 gem 'will_paginate'
 gem 'rails_12factor'
 gem 'whenever', require: false
+gem 'dotenv-rails'

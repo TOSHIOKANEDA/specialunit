@@ -28,3 +28,7 @@
 
 development.rb
 booking_mailer.rb
+production.rb
+devise.rb
+
+/.env
