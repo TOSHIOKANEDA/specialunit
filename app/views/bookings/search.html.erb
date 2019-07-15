@@ -1,10 +1,11 @@
 <%= render 'shared/head' %>  
   
   <%= form_tag('/bookings/result',method: :get) do %>
+  
 
   <div class = "centering_item">
     <div class = centering_line_item>
-      <strong>コンテナタイプ</strong>
+      <strong multiple>コンテナタイプ</strong>
         <select name="kind" type="string">
           <option value ="">ALL</option>
           <option value ="20FR">20FR</option>
@@ -15,7 +16,7 @@
     </div>
     
      <div class = centering_line_item>
-       <strong>WEEK</strong>
+       <strong multiple>WEEK</strong>
           <select name="week" type="integer">
             <option value ="">ALL</option>
             <% 52.times do |num| %>
@@ -25,7 +26,7 @@
       </div>
   
      <div class = centering_line_item>
-       <strong>港</strong>
+       <strong multiple>港</strong>
         <select name ="place" type="string">
           <option value ="">ALL</option>
           <option value ="Tokyo">Tokyo</option>
@@ -46,7 +47,7 @@
       </div>
         
     <div class = centering_line_item>
-      <strong>ステータス</strong>
+      <strong multiple>ステータス</strong>
         <select name ="status" type="string">
         <option value ="waiting">新規申請</option>
         <option value ="confirmed">在庫OK</option>
@@ -54,9 +55,24 @@
         <option value ="waiting_list">キャンセル待ち</option>
         </select>
     </div>
+    
+    <div class = centering_line_item>
+        <strong multiple>YEAR</strong>  
+        <select name="year"  type="integer">
+        <% d = Date.today %>
+        <% @year = d.year %>
+        <option value ="<%= @year %>"><%= @year %></option>
+        <option value ="<%= @year + 1 %>"><%= @year + 1 %></option>
+        </select>
+    </div>
 
     <input type="submit" value ="確認画面へ" class = "btn-square-pop2">
+    <%= content_tag :button, "Excelダウンロード", :class=>"btn-square-pop2", :formaction => bookings_download_path %>
+    
+
+
   <% end %>
+  
 </div>
 
   

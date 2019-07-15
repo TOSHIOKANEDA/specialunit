@@ -3,21 +3,28 @@
 <table class = "bbb">
   <h3>一覧</h3>
   <div class="button_right"><button><%= link_to "ジャッジ検索に戻る", "/bookings/search" , {:class => "btn-square-pop2"}%></button></div>
+
+
   <%= will_paginate @results %>
-  <th>ステータス</th><th>港</th><th>本数</th><th>WEEK</th><th>コンテナタイプ</th><th>リマーク</th><th>名前</th><th></th>
+  <th>ステータス</th><th>TK番号</th><th>申請日</th><th>港</th><th>本数</th><th>WEEK</th><th>コンテナタイプ</th><th>リマーク</th><th>名前</th><th>許可日</th><th></th>
 <% @results.each do |r| %>
 <tr><td><%= r.status %></td>
+<td><%= r.tk_number %></td>
+<td><%= r.created_at.strftime('%Y年%m月%d日') %></td>
 <td><%= r.place %></td>
 <td><%= r.volume %></td>
 <td><%= r.week %></td>
 <td><%= r.kind %></td>
 <td><%= r.main_column %></td>
 <td><%= r.email %></td>
+<% if r.status == "confirmed" %>
+<td><%= r.updated_at.strftime('%Y年%m月%d日') %></td>
+<% else %>
+<td>TK未発番</td>
+<%end%>
 <td><%= link_to 'ステータス更新', "/bookings/#{r.id}/edit", method: :patch, :class => "btn-square-pop2" %></td></tr>
 <% end %>
 </table>
-
-
 <%= render 'shared/bottom' %> 
 
 

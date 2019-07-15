@@ -15,13 +15,28 @@ class BookingMailer < ApplicationMailer
     status_update_check = '在庫あります！確保はこの後に実際Booking入れてからです！'
     end
     
-     @status = status_update_check
+    @status = status_update_check
+    
+    if booking.status == 'confirmed'
 
     mail from: ENV['MAIL_ID'],
     to: ENV['MAIL_ID'],
     cc: ["#{admin_email}","#{booking.email}"],
-    subject: booking.email + 'さん / ' + booking.place + '/' + booking.kind + '/ '+ booking.volume.to_s + 
+    subject:'[' + booking.tk_number + ']' + booking.email + 'さん / ' + booking.place + 'の' + booking.kind + 'X'+ booking.volume.to_s + 
             'について' + status_update_check
+    
+    else
+    mail from: ENV['MAIL_ID'],
+    to: ENV['MAIL_ID'],
+    cc: ["#{admin_email}","#{booking.email}"],
+    subject: booking.email + 'さん / ' + booking.place + 'の' + booking.kind + 'Ｘ'+ booking.volume.to_s + 
+            'について' + status_update_check
+
+    end
+    
+    
+            
+
     end
     
     

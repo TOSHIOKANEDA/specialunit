@@ -75,6 +75,7 @@ def result
   b = params[:kind]
   c = params[:week]
   d = params[:status]
+  
 
   
   place_condition = Booking.where(place: a).where(status: d).paginate(page: params[:page], per_page: 10)
@@ -100,20 +101,110 @@ def result
   else
     if b.present?
       if c.present?
-      @results = kind_condition.where(week: c)
     else
       @results = kind_condition
       end
     elsif c.present?
       @results = week_condition
     else
-      @results = status_condition
+    @results = status_condition
     end
   end
-  
   redirect_to({action: 'search'}, alert: "その条件ではなし！") if @results.blank?
+end
+
+
+
+
+def downdload
+  a = params[:place]
+  b = params[:kind]
+  c = params[:week]
+  d = params[:status]
+  
+
+  
+  place_condition = Booking.where(place: a).where(status: d).paginate(page: params[:page], per_page: 10)
+  kind_condition = Booking.where(kind: b).where(status: d).paginate(page: params[:page], per_page: 10)
+  all_condition = Booking.where(place: a).where(kind: b).where(week: c).where(status: d).paginate(page: params[:page], per_page: 10)
+  status_condition = Booking.where(status: d).paginate(page: params[:page], per_page: 10)
+  week_condition = Booking.where(week: c).paginate(page: params[:page], per_page: 10)
+  
+
+  if a.present?
+    if b.present?
+      if c.present?
+      @results = all_condition
+      respond_to do |format|
+      format.html
+      format.xlsx {response.headers['Content-Disposition'] = 'attachment; filename="Product.xlsx"'}
+      end
+      else
+      @results = place_condition.where(kind: b)
+      respond_to do |format|
+      format.html
+      format.xlsx {response.headers['Content-Disposition'] = 'attachment; filename="Product.xlsx"'}
+      end
+      end
+    elsif c.present?
+      @results = place_condition.where(week: c)
+      respond_to do |format|
+      format.html
+      format.xlsx {response.headers['Content-Disposition'] = 'attachment; filename="Product.xlsx"'}
+      end
+    else
+      @results = place_condition
+      respond_to do |format|
+      format.html
+      format.xlsx {response.headers['Content-Disposition'] = 'attachment; filename="Product.xlsx"'}
+      end
+    end
+      
+  else
+    if b.present?
+      if c.present?
+    else
+      @results = kind_condition
+      respond_to do |format|
+      format.html
+      format.xlsx {response.headers['Content-Disposition'] = 'attachment; filename="Product.xlsx"'}
+      end
+      end
+    elsif c.present?
+    @results = week_condition
+    respond_to do |format|
+    format.html
+    format.xlsx {response.headers['Content-Disposition'] = 'attachment; filename="Product.xlsx"'}
+    end
+    else
+    @results = status_condition
+    respond_to do |format|
+    format.html
+    format.xlsx {response.headers['Content-Disposition'] = 'attachment; filename="Product.xlsx"'}
+    end
+    end
+  end
+
+    Axlsx::Package.new do |p|
+    p.workbook.add_worksheet(name: "一覧") do |sheet|
+      sheet.add_row ["ステータス","申請日","TK番号","港","本数","WEEK","YEAR","コンテナタイプ","名前","リマーク","許可日"]
+      @results.each do |ddl|
+      if ddl.status == "confirmed"
+      sheet.add_row [ddl.status, ddl.created_at.strftime('%Y年%m月%d日'), ddl.tk_number, ddl.place, ddl.volume, ddl.week, ddl.year, ddl.kind, ddl.email, ddl.main_column,ddl.updated_at.strftime('%Y年%m月%d日')]
+      else
+      sheet.add_row [ddl.status, ddl.created_at.strftime('%Y年%m月%d日'), ddl.tk_number, ddl.place, ddl.volume, ddl.week, ddl.year, ddl.kind, ddl.email, ddl.main_column]
+      end
+      end
+    end
+    send_data(p.to_stream.read,
+              type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+              filename: "sample.xlsx")
+  end
+  
+  
   
 end
+
 
 def edit
   @booking = Booking.find(params[:id])

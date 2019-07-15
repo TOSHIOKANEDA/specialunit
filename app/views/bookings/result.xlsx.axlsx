@@ -1,0 +1,12 @@
+wb = xlsx_package.workbook
+
+wb.styles do |style|
+  highlight_cell = style.add_style(bg_color: "EFC376")
+
+  wb.add_worksheet(name: "Bookings") do |sheet|
+    @results.each do |r|
+     sheet.add_row [r.email,"World"], style: [nil, highlight_cell]
+    end
+  end
+end
+
