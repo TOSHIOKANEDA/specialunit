@@ -124,11 +124,11 @@ def downdload
   
 
   
-  place_condition = Booking.where(place: a).where(status: d).paginate(page: params[:page], per_page: 10)
-  kind_condition = Booking.where(kind: b).where(status: d).paginate(page: params[:page], per_page: 10)
-  all_condition = Booking.where(place: a).where(kind: b).where(week: c).where(status: d).paginate(page: params[:page], per_page: 10)
-  status_condition = Booking.where(status: d).paginate(page: params[:page], per_page: 10)
-  week_condition = Booking.where(week: c).paginate(page: params[:page], per_page: 10)
+  place_condition = Booking.where(place: a).where(status: d)
+  kind_condition = Booking.where(kind: b).where(status: d)
+  all_condition = Booking.where(place: a).where(kind: b)
+  status_condition = Booking.where(status: d)
+  week_condition = Booking.where(week: c)
   
 
   if a.present?
@@ -198,7 +198,7 @@ def downdload
     end
     send_data(p.to_stream.read,
               type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-              filename: "sample.xlsx")
+              filename: "TKダウンロード.xlsx")
   end
   
   
