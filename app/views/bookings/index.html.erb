@@ -7,13 +7,13 @@
       <%= form_tag('/bookings/seek_booking_result', method: :get) do %>
       <%= render 'shared/4choice' %> 
     
-      <input type="submit" value ="在庫確認からBooking" class = "btn-square-pop">
+      <input type="submit" value ="在庫確認からTK申請" class = "btn-square-pop">
       <% end %>
   </div>
     
       <div class="right_wrap">
         <ul>
-        <a class="btn-square-pop" href="/bookings/new">すぐ Booking</a>
+        <a class="btn-square-pop" href="/bookings/new">すぐTK申請</a>
         <% if current_user.admin? %>
           <p><a class="btn-square-pop2" href="/bookings/search">申請内容更新</a></p>
           <p><a class="btn-square-pop2" href="/acceptings/new">在庫薄設定</a></p>

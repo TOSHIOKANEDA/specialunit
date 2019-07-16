@@ -18,8 +18,8 @@ end
 def seek_booking_result
       @w_place = booking_params[:place]
       @w_kind = booking_params[:kind]
-      @w_week = booking_params[:week]
-      @w_year = booking_params[:year]
+      @w_week = booking_params[:week][-2..-1]
+      @w_year = booking_params[:week][0..3]
       
   
   
@@ -225,10 +225,18 @@ def new
     @booking = Booking.new
 end
  
+
+ 
+ 
 def confirm
     @booking = Booking.new(create_params)
+    @ketsu = create_params[:week][-2..-1]
+    @booking.week = @ketsu
+    @booking.year = create_params[:week][0..3] if @booking.year.blank?
     render :action => 'confirm'
 end
+ 
+ 
  
 def done
   @booking = Booking.new(create_params)
@@ -243,11 +251,11 @@ end
 
 private
 def booking_params
-  params.permit(:place, :kind, :week, :volume, :status, :year, :sub_column, :main_column, :email, :admin, :tk_number)
+  params.permit(:place, :kind, :week, :volume, :status, :year, :sub_column, :main_column, :email, :admin, :tk_number, :eqc_column, :pick_up)
 end
 
 def create_params
-  params.require(:booking).permit(:place, :kind, :week, :volume, :status, :year, :sub_column, :main_column, :email, :tk_number)
+  params.require(:booking).permit(:place, :kind, :week, :volume, :status, :year, :sub_column, :main_column, :email, :tk_number, :eqc_column, :pick_up)
 end
 
 def move_to_index

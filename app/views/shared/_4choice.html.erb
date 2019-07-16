@@ -25,17 +25,8 @@
           <option value ="40OT">40OT</option>
         </select></p>
         
+
         <strong>WEEK</strong>
-        <p><select name="week" type="integer">
-            <% 52.times do |num| %>
-               <option value ="<%= num + 1 %>"><%= num + 1 %></option>
-            <% end %>
-          </select></p>
-          
-        <strong>YEAR</strong>  
-        <p><select name="year"  type="integer">
-        <% d = Date.today %>
-        <% @year = d.year %>
-        <option value ="<%= @year %>"><%= @year %></option>
-        <option value ="<%= @year + 1 %>"><%= @year + 1 %></option>
-        </select></p>
+        <p><%= week_field_tag :week, min: "2019-W01"%></p>
+        
+

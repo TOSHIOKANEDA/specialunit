@@ -31,10 +31,21 @@
         <option value ="rejected">在庫ありません！</option>
         <option value ="waiting_list">キャンセル待ち</option>
       </select>
-  </div>  
+  </div>
   
-  <input type="submit" value="確定する" class = "btn-square-pop2">
+  <div class = centering_line_item>
+  <strong>EQCからのRemark</strong>  
+    <%= text_field_tag :eqc_column %>
+  </div>
+  
+  <div class = centering_line_item>
+  <strong>指定PICK日</strong>  
+    <%= date_field_tag :pick_up %>日以降
+  </div>
 
+  <div class = centering_line_item>  
+  <input type="submit" value="確定する" class = "btn-square-pop2">
+  </div>
   
 <% end %>
       

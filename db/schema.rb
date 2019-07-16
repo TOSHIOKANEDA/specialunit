@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_09_092352) do
+ActiveRecord::Schema.define(version: 2019_07_16_102914) do
 
   create_table "acceptings", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -29,8 +29,8 @@ ActiveRecord::Schema.define(version: 2019_07_09_092352) do
     t.integer "week"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string "port"
-    t.string "type"
+    t.text "eqc_column"
+    t.string "pick_up"
     t.string "place"
     t.string "kind"
     t.string "email"

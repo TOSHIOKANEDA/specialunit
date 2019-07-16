@@ -11,7 +11,11 @@
 <p>コンテナタイプ：<%= @booking.kind %></p>
 <p>年：<%= @booking.year %></p>
 <p>船名とかETAとか：<%= @booking.main_column %></p>
-<p>その他Remark：<%= @booking.sub_column %></p>
+<p>EQC Remark：<%= @booking.eqc_column %></p>
+
+<% if @booking.status == "confirmed" %>
+<p>PICK可能日：<%= @booking.pick_up %>以降</p>
+<%end%>
 
 
 <p>送信専用アドレスから送信されてきてます。送信元に返信せず、このメールに返信でコンテナ課担当者さん<%= @admin_email %>へメールできます</p>

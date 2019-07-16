@@ -31,12 +31,7 @@ class BookingMailer < ApplicationMailer
     cc: ["#{admin_email}","#{booking.email}"],
     subject: booking.email + 'さん / ' + booking.place + 'の' + booking.kind + 'Ｘ'+ booking.volume.to_s + 
             'について' + status_update_check
-
     end
-    
-    
-            
-
     end
     
     

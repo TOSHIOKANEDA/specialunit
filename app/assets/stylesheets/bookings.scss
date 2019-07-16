@@ -141,9 +141,9 @@ html {
  
 .centering_item {
     width: 500px;               /* 幅指定 */
-    height: 90px;               /* 高さ指定 */
+    height: 60px;               /* 高さ指定 */
     margin:  0 auto;            /* 中央寄せ */
-    line-height: 1.8em;
+    line-height: 2em;
 }
 
 // ここまで
@@ -216,7 +216,7 @@ table.bbb tr:nth-child(odd){
 // ここまで
 
 .centering_line_item {
-    line-height: 60px;
+    line-height: 100px;
     width: 2500px;
 }
 

@@ -43,16 +43,14 @@
     <a><% if @w_week.present? %>
     <%= f.select :week, [@w_week] %>
     <% else %>
-       <%= f.select :week, options_for_select((1..52).to_a) %>
+    <%= f.week_field :week, min: "2019-W01" %>
     <% end %></a>
     </div>
     
     <div class = centering_line_item>
     <strong>YEAR</strong>
     <a><% if @w_year.present? %>
-      <%= f.select :year, [@w_year] %>
-    <% else %>
-        <%= f.select :year, Date.today.year .. Date.today.year+1 %>
+    <%= f.select :year, [@w_year] %>
     <% end %></a>
     </div>
     
@@ -77,7 +75,7 @@
     </div>
     
     <div class = centering_line_item>
-      <%= f.submit '確認画面へ',  {:class => "btn-square-pop"} %>
+      <%= f.submit '確認画面へ',  {:class => "btn-square-pop"}%>
     </div>
     
   </div>
