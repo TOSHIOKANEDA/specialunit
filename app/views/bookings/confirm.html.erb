@@ -1,6 +1,5 @@
 <%= render 'shared/head' %>
 
-<%= @w_year %>
 
 <%= form_for @booking, :url => bookings_done_path do |f| %>
   <div class="centering_item">
@@ -8,9 +7,9 @@
     <h2>確認</h2>
     <tr><th>港</th><td> <%= f.hidden_field :place %><%= @booking.place %></td></tr>
     <tr><th>コンテナタイプ</th><td> <%= f.hidden_field :kind %><%= @booking.kind %></td></tr>
-    <tr><th>WEEK</th><td><%= @ketsu %></td></tr>
-    <tr><th>YEAR</th><td><%= @booking.year %></td></tr>
-    <tr><th>VOLUME</th><td><%= @booking.volume %></td></tr>
+    <tr><th>WEEK</th><td><%= f.hidden_field :week %><%= @ketsu %></td></tr>
+    <tr><th>YEAR</th><td><%= f.hidden_field :year %><%= @booking.year %></td></tr>
+    <tr><th>VOLUME</th><td><%= f.hidden_field :volume %><%= @booking.volume %></td></tr>
     <tr><th>リマーク</th><td> <%= f.hidden_field :main_column %><%= @booking.main_column %></td></tr>
     <tr><th>ラインマスター</th><td> <%= f.hidden_field :sub_column %><%= @booking.sub_column %></td></tr>
     </table>

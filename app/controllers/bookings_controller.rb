@@ -18,7 +18,7 @@ end
 def seek_booking_result
       @w_place = booking_params[:place]
       @w_kind = booking_params[:kind]
-      @w_week = booking_params[:week][-2..-1] 
+      @w_week = booking_params[:week][-2..-1]
       @w_year = booking_params[:week][0..3]
       
   
