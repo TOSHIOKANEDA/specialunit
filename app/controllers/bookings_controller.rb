@@ -18,8 +18,8 @@ end
 def seek_booking_result
       @w_place = booking_params[:place]
       @w_kind = booking_params[:kind]
-      @w_week = booking_params[:week][-2..-1]
-      @w_year = booking_params[:week][0..3]
+      @w_week = booking_params[:week][-2..-1].to_i 
+      @w_year = booking_params[:week][0..3].to_i 
       
   
   
@@ -230,9 +230,9 @@ end
  
 def confirm
     @booking = Booking.new(create_params)
-    @ketsu = create_params[:week][-2..-1]
+    @ketsu = create_params[:week][-2..-1].to_i 
     @booking.week = @ketsu
-    @booking.year = create_params[:week][0..3] if @booking.year.blank?
+    @booking.year = create_params[:week][0..3].to_i  if @booking.year.blank?
     render :action => 'confirm'
 end
  
