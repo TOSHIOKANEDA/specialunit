@@ -4,13 +4,16 @@ def new
 end
 
 def create
-  Accepting.create(accepting_params)
+  @accepting = Accepting.new(accepting_params)
+  @accepting[:week] = accepting_params[:week][-2..-1]
+  @accepting[:year] = accepting_params[:week][0..3]
+  @accepting.save
   redirect_to action: 'show'
 end
 
 
 def show
-  @accepting = Accepting.all
+  @acceptings = Accepting.all
 end
 
 

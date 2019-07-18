@@ -1,10 +1,11 @@
 <%= render 'shared/head' %> 
 
 
+
   <table class ="bbb">
     <h2>在庫薄一覧</h2>
       <th>港</th><th>コンテナタイプ</th><th>WEEK</th><th>YEAR</th><th>削除</th>
-        <% @accepting.each do |r| %>
+        <% @acceptings.each do |r| %>
         <tr><td><%= r.place %></td>
         <td><%= r.kind %></td>
         <td><%= r.week %></td>
