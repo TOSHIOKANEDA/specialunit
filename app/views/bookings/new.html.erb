@@ -59,18 +59,14 @@
     <strong>WEEK</strong>
     <a><% if @w_week.present? %>
     <%= f.select :week, [@w_week] %>
+    <%= f.select :year, [@w_year] %>
     <% else %>
     <%= f.week_field :week, min: "2019-W01" %>
     <% end %></a>
     </div>
     
 
-    
-    <!--<div class = centering_line_item>-->
-    <!--<strong>Volume</strong>-->
-    <!--   <a><%= f.select :volume, options_for_select((1..15).to_a) %></a>-->
-    <!--</div>-->
-    
+
 
     
     <div class = centering_line_item>

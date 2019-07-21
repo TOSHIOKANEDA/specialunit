@@ -196,6 +196,8 @@ end
 
 def new
     @w_place = booking_params[:place]
+    @w_week = booking_params[:week]
+    @w_year = booking_params[:year]
     @w_ot_20 = booking_params[:ot_20]
     @w_ot_40 = booking_params[:ot_40]
     @w_fr_20 = booking_params[:fr_20]
