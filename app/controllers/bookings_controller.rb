@@ -20,12 +20,21 @@ def seek_booking_result
       @w_kind = booking_params[:kind]
       @w_week = booking_params[:week][-2..-1]
       @w_year = booking_params[:week][0..3]
+      @w_ot_20 = booking_params[:ot_20]
+      @w_ot_40 = booking_params[:ot_40]
+      @w_fr_20 = booking_params[:fr_20]
+      @w_fr_40 = booking_params[:fr_40]
+      # @w_ot_20 = "20OT" if @w_ot_20.present
+      # @w_ot_40 = "40OT" if @w_ot_40.present
+      # @w_fr_20 = "20FR" if @w_fr_20.present
+      # @w_fr_40 = "40FR" if @w_fr_40.present
       
-  
-  
-      @booking = Booking.where(place: @w_place, kind: @w_kind, week: @w_week)  
-      @a = Accepting.where(place: @w_place, kind: @w_kind, week: @w_week)  
-      @pre_booking = Booking.where(place: @w_place, kind: @w_kind, week: @w_week).pluck(:volume).compact.inject(:+)
+      @booking = Booking.where(place: @w_place).where(week: @w_week)
+      # @kind_sum = @booking[:ot_20].to_i.inject.(:+)
+      
+      
+      
+      @a = Accepting.where(place: @w_place, kind: @w_kind, week: @w_week)
       @a_day_behind = Accepting.where('kind=? and place=? and week=?', @w_kind, @w_place, (@w_week.to_i + 1))
       @a_day_ahead = Accepting.where('kind=? and place=? and week=?', @w_kind, @w_place, (@w_week.to_i - 1))
       no = "在庫薄！"
@@ -53,16 +62,7 @@ def seek_booking_result
             @a_day_ahead_result = yes unless ban_week
             @a_day_ahead_result = no_idea if ban_week
         end
-        
-    if @pre_booking.blank?
-          @pre_booking_result = "なし"
-          else
-            if @pre_booking > 0
-              @pre_booking_result = "#{@pre_booking}本"
-            else
-              @pre_booking_result = "なし"
-            end
-    end
+
 end
 
 def search
@@ -72,43 +72,20 @@ end
 
 def result
   a = params[:place]
-  b = params[:kind]
-  c = params[:week]
   d = params[:status]
   
-
-  
-  place_condition = Booking.where(place: a).where(status: d).paginate(page: params[:page], per_page: 10)
-  kind_condition = Booking.where(kind: b).where(status: d).paginate(page: params[:page], per_page: 10)
-  all_condition = Booking.where(place: a).where(kind: b).where(week: c).where(status: d).paginate(page: params[:page], per_page: 10)
+  place_condition = Booking.where(place: a).paginate(page: params[:page], per_page: 10)
+  all_condition = Booking.where(place: a).where(status: d).paginate(page: params[:page], per_page: 10)
   status_condition = Booking.where(status: d).paginate(page: params[:page], per_page: 10)
-  week_condition = Booking.where(week: c).paginate(page: params[:page], per_page: 10)
-  
 
   if a.present?
-    if b.present?
-      if c.present?
-      @results = all_condition
-      else
-      @results = place_condition.where(kind: b)
-      end
-    elsif c.present?
-      @results = place_condition.where(week: c)
+    if d.present?
+    @results = all_condition
     else
-      @results = place_condition
+    @results = place_condition
     end
-      
   else
-    if b.present?
-      if c.present?
-    else
-      @results = kind_condition
-      end
-    elsif c.present?
-      @results = week_condition
-    else
     @results = status_condition
-    end
   end
   redirect_to({action: 'search'}, alert: "その条件ではなし！") if @results.blank?
 end
@@ -219,9 +196,10 @@ end
 
 def new
     @w_place = booking_params[:place]
-    @w_kind = booking_params[:kind]
-    @w_week = booking_params[:week]
-    @w_year = booking_params[:year]
+    @w_ot_20 = booking_params[:ot_20]
+    @w_ot_40 = booking_params[:ot_40]
+    @w_fr_20 = booking_params[:fr_20]
+    @w_fr_40 = booking_params[:fr_40]
     @booking = Booking.new
 end
  
@@ -251,11 +229,11 @@ end
 
 private
 def booking_params
-  params.permit(:place, :kind, :week, :volume, :status, :year, :sub_column, :main_column, :email, :admin, :tk_number, :eqc_column, :pick_up)
+  params.permit(:place, :kind, :status, :year, :sub_column, :main_column, :email, :admin, :tk_number, :eqc_column, :pick_up, :ot_20, :ot_40, :fr_20, :fr_40, :week, :volume)
 end
 
 def create_params
-  params.require(:booking).permit(:place, :kind, :week, :volume, :status, :year, :sub_column, :main_column, :email, :tk_number, :eqc_column, :pick_up)
+  params.require(:booking).permit(:place, :kind, :status, :year, :sub_column, :main_column, :email, :tk_number, :eqc_column, :pick_up, :ot_20, :ot_40, :fr_20, :fr_40, :week, :volume)
 end
 
 def move_to_index
