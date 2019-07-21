@@ -26,17 +26,34 @@
     </div>
     
     <div class = centering_line_item>
-    <strong>コンテナタイプ</strong>
-    <a><% if @w_kind.present? %>
-    <%= f.select :kind, [@w_kind] %>
-    <% else %>
-       <%= f.select :kind, 
-        [["20OT", "20OT"], 
-        ["40OT", "40OT"],
-        ["20FR", "20FR"],
-        ["40FR", "40FR"]] %>
-    <% end %></a>
+    <strong>20F Open Top</strong>
+    <a><%= f.select :ot_20, 
+    [["0", "0"],["1", "1"],["2", "2"],["3", "3"],["4", "4"],["5", "5"],["6", "6"],["7", "7"],["8", "8"],["9", "9"],["10", "10"],["11", "11"],["12", "12"],["13", "13"],["14", "14"],["15", "15"]] %>
+    </a>
     </div>
+    
+    <div class = centering_line_item>
+    <strong>20F Flat Rack</strong>
+    <a><%= f.select :fr_20, 
+        [["0", "0"],["1", "1"],["2", "2"],["3", "3"],["4", "4"],["5", "5"],["6", "6"],["7", "7"],["8", "8"],["9", "9"],["10", "10"],["11", "11"],["12", "12"],["13", "13"],["14", "14"],["15", "15"]] %>
+    </a>
+    </div>
+    
+    <div class = centering_line_item>
+    <strong>40F Open Top</strong>
+    <a><%= f.select :ot_40, 
+        [["0", "0"],["1", "1"],["2", "2"],["3", "3"],["4", "4"],["5", "5"],["6", "6"],["7", "7"],["8", "8"],["9", "9"],["10", "10"],["11", "11"],["12", "12"],["13", "13"],["14", "14"],["15", "15"]] %>
+    </a>
+    </div>
+    
+    <div class = centering_line_item>
+    <strong>40F Flat Rack</strong>
+    <a><%= f.select :fr_40, 
+        [["0", "0"],["1", "1"],["2", "2"],["3", "3"],["4", "4"],["5", "5"],["6", "6"],["7", "7"],["8", "8"],["9", "9"],["10", "10"],["11", "11"],["12", "12"],["13", "13"],["14", "14"],["15", "15"]] %>
+    </a>
+    </div>
+    
+    
     
     <div class = centering_line_item>
     <strong>WEEK</strong>
@@ -47,17 +64,12 @@
     <% end %></a>
     </div>
     
-    <div class = centering_line_item>
-    <strong>YEAR</strong>
-    <a><% if @w_year.present? %>
-    <%= f.select :year, [@w_year] %>
-    <% end %></a>
-    </div>
+
     
-    <div class = centering_line_item>
-    <strong>Volume</strong>
-       <a><%= f.select :volume, options_for_select((1..15).to_a) %></a>
-    </div>
+    <!--<div class = centering_line_item>-->
+    <!--<strong>Volume</strong>-->
+    <!--   <a><%= f.select :volume, options_for_select((1..15).to_a) %></a>-->
+    <!--</div>-->
     
 
     

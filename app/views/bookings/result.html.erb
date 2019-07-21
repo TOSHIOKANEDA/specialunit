@@ -6,15 +6,17 @@
 
 
   <%= will_paginate @results %>
-  <th>ステータス</th><th>TK番号</th><th>申請日</th><th>港</th><th>本数</th><th>WEEK</th><th>コンテナタイプ</th><th>リマーク</th><th>名前</th><th>許可日</th><th></th>
+  <th>ステータス</th><th>TK番号</th><th>申請日</th><th>港</th><th>WEEK</th><th>20OT</th><th>40OT</th><th>20FR</th><th>40FR</th><th>リマーク</th><th>名前</th><th>許可日</th><th></th>
 <% @results.each do |r| %>
 <tr><td><%= r.status %></td>
 <td><%= r.tk_number %></td>
 <td><%= r.created_at.strftime('%Y年%m月%d日') %></td>
 <td><%= r.place %></td>
-<td><%= r.volume %></td>
 <td><%= r.week %></td>
-<td><%= r.kind %></td>
+<td><%= r.ot_20 %></td>
+<td><%= r.ot_40 %></td>
+<td><%= r.fr_20 %></td>
+<td><%= r.fr_40 %></td>
 <td><%= r.main_column %></td>
 <td><%= r.email %></td>
 <% if r.status == "confirmed" %>

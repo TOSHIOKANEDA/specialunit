@@ -6,10 +6,14 @@
     <table class ="aaa">
     <h2>確認</h2>
     <tr><th>港</th><td> <%= f.hidden_field :place %><%= @booking.place %></td></tr>
-    <tr><th>コンテナタイプ</th><td> <%= f.hidden_field :kind %><%= @booking.kind %></td></tr>
+    <tr><th>20F Open Top</th><td> <%= f.hidden_field :ot_20 %><%= @booking.ot_20 %>本</td></tr>
+    <tr><th>20F Flat Rack</th><td> <%= f.hidden_field :fr_20 %><%= @booking.fr_20 %>本</td></tr>
+    <tr><th>40F Open Top</th><td> <%= f.hidden_field :ot_40 %><%= @booking.ot_40 %>本</td></tr>
+    <tr><th>40F Flat Rack</th><td> <%= f.hidden_field :fr_40 %><%= @booking.fr_40 %>本</td></tr>
+
     <tr><th>WEEK</th><td><%= f.hidden_field :week %><%= @ketsu %></td></tr>
     <tr><th>YEAR</th><td><%= f.hidden_field :year %><%= @booking.year %></td></tr>
-    <tr><th>VOLUME</th><td><%= f.hidden_field :volume %><%= @booking.volume %></td></tr>
+    <!--<tr><th>VOLUME</th><td><%= f.hidden_field :volume %><%= @booking.volume %></td></tr>-->
     <tr><th>リマーク</th><td> <%= f.hidden_field :main_column %><%= @booking.main_column %></td></tr>
     <tr><th>ラインマスター</th><td> <%= f.hidden_field :sub_column %><%= @booking.sub_column %></td></tr>
     </table>

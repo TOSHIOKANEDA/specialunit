@@ -5,10 +5,12 @@
 <p>Bookingリマークに忘れずに書いてね</p>
 <%end%>
 <p>内容: <%= @status %></p>
-<p>本数：<%= @booking.volume %></p>
+<p>20OT：<%= @booking.ot_20 %></p>
+<p>40OT：<%= @booking.ot_40 %></p>
+<p>20FR：<%= @booking.fr_20 %></p>
+<p>40FR：<%= @booking.fr_40 %></p>
 <p>ピック予定WEEK：<%= @booking.week %></p>
 <p>港：<%= @booking.place %></p>
-<p>コンテナタイプ：<%= @booking.kind %></p>
 <p>年：<%= @booking.year %></p>
 <p>船名とかETAとか：<%= @booking.main_column %></p>
 <p>EQC Remark：<%= @booking.eqc_column %></p>

@@ -3,15 +3,15 @@
  <h1>更新画面</h1>
  
 <div class = "centering_item">
-  <div class = centering_line_item>
   <%= form_tag("/bookings/#{@booking.id}", method: :patch ) do %>
-    <strong>本数を訂正</strong>
-    <select name="volume" type="integer">
-        <% 10.times do |num| %>
-          <option value ="<%= num + 1 %>"><%= num + 1 %></option>
-        <% end %>
-    </select>
-  </div>
+  <!--<div class = centering_line_item>-->
+  <!--  <strong>本数を訂正</strong>-->
+  <!--  <select name="volume" type="integer">-->
+  <!--      <% 10.times do |num| %>-->
+  <!--        <option value ="<%= num + 1 %>"><%= num + 1 %></option>-->
+  <!--      <% end %>-->
+  <!--  </select>-->
+  <!--</div>-->
   
   <div class = centering_line_item>
     <strong>年を訂正<strong>

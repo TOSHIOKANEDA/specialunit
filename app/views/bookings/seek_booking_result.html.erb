@@ -6,16 +6,14 @@
         <table class ="aaa">
         <h3>あなたが選択したのは下の感じです</h3>
         <tr><th>コンテナタイプ</th><td><%= @w_kind %></td></tr>
-        <tr><th>港</th><td><%= @w_place %></td></tr>
         <tr><th>WEEK</th><td><%= @w_week %></td></tr>
-        <tr><th>YEAR</th><td><%= @w_year %></td></tr>
+        <tr><th>港</th><td><%= @w_place %></td></tr>
         <tr><th>可否状況</th><td><%= @a_result %></td></tr>
-        <tr><th>引き合い数</th><td><%= @pre_booking_result %></td></tr>
         <tr><th>１週前</th><td><%= @a_day_ahead_result %></td></tr>
         <tr><th>１週後</th><td><%= @a_day_behind_result %></td></tr>
         </table>
         <div class="button_center">
-        <button><%= link_to "TK申請へ進む", {:action => "new", :week => @w_week, :place => @w_place, :kind => @w_kind, :year => @w_year}, {:class => "btn-square-pop"} %></button>
+        <button><%= link_to "TK申請へ進む", {:action => "new", :place => @w_place}, {:class => "btn-square-pop"} %></button>
         </div>
       </div>
 
@@ -23,12 +21,21 @@
      <div class="right_wrap"> 
         <table class = "bbb">
           <%if @booking.present?%>
-          <h3>すでにbookingしている方々</h3>
-          <th>名前</th><th>本数</th><th>可否判断状況</th>
+          <h3>Week<%= @w_week %>の<%= @w_place %>で、すでにbookingしている方々</h3>
+          <th>名前</th><th>20OT</th><th>40OT</th><th>20FR</th><th>40FR</th><th>可否判断状況</th>
           <%end%>
+          <% array_ot_20 = [] %>
+          <% array_ot_40 = [] %>
+          <% array_fr_20 = [] %>
+          <% array_fr_40 = [] %>
           <% @booking.find_each do |p| %>
-          <tr><td><%= p.email %></td><td><%= p.volume %></td><td><%= p.status %></td></tr>
+          <tr><td><%= p.email %></td><td><%= p.ot_20 %></td><td><%= p.ot_40 %></td><td><%= p.fr_20 %></td><td><%= p.fr_40 %></td><td><%= p.status %></td></tr>
+          <% array_ot_20 << p.ot_20 %>
+          <% array_ot_40 << p.ot_40 %>
+          <% array_fr_20 << p.fr_20 %>
+          <% array_fr_40 << p.fr_40 %>
         <% end %>
+          <tr><td>合計</td><td><%= array_ot_20.sum %></td><td><%= array_ot_40.sum %></td><td><%= array_fr_20.sum %></td><td><%= array_fr_40.sum %></td><td></td><td></td></tr>
         </table>
       </div>
     </div>

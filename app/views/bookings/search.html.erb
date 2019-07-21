@@ -15,15 +15,15 @@
         </select>
     </div>
     
-     <div class = centering_line_item>
-       <strong multiple>WEEK</strong>
-          <select name="week" type="integer">
-            <option value ="">ALL</option>
-            <% 52.times do |num| %>
-               <option value ="<%= num + 1 %>"><%= num + 1 %></option>
-            <% end %>
-          </select>
-      </div>
+     <!--<div class = centering_line_item>-->
+     <!--  <strong multiple>WEEK</strong>-->
+     <!--     <select name="week" type="integer">-->
+     <!--       <option value ="">ALL</option>-->
+     <!--       <% 52.times do |num| %>-->
+     <!--          <option value ="<%= num + 1 %>"><%= num + 1 %></option>-->
+     <!--       <% end %>-->
+     <!--     </select>-->
+     <!-- </div>-->
   
      <div class = centering_line_item>
        <strong multiple>港</strong>
@@ -56,15 +56,15 @@
         </select>
     </div>
     
-    <div class = centering_line_item>
-        <strong multiple>YEAR</strong>  
-        <select name="year"  type="integer">
-        <% d = Date.today %>
-        <% @year = d.year %>
-        <option value ="<%= @year %>"><%= @year %></option>
-        <option value ="<%= @year + 1 %>"><%= @year + 1 %></option>
-        </select>
-    </div>
+    <!--<div class = centering_line_item>-->
+    <!--    <strong multiple>YEAR</strong>  -->
+    <!--    <select name="year"  type="integer">-->
+    <!--    <% d = Date.today %>-->
+    <!--    <% @year = d.year %>-->
+    <!--    <option value ="<%= @year %>"><%= @year %></option>-->
+    <!--    <option value ="<%= @year + 1 %>"><%= @year + 1 %></option>-->
+    <!--    </select>-->
+    <!--</div>-->
 
     <input type="submit" value ="確認画面へ" class = "btn-square-pop2">
     <%= content_tag :button, "Excelダウンロード", :class=>"btn-square-pop2", :formaction => bookings_download_path %>

@@ -1,10 +1,12 @@
 <%= @booking.email %>さんからの新規在庫内容確認依頼
 
 <p>内容:</p>
-<p>本数：<%= @booking.volume %></p>
 <p>ピック予定WEEK：<%= @booking.week %></p>
 <p>港：<%= @booking.place %></p>
-<p>コンテナタイプ：<%= @booking.kind %></p>
+<p>20OT：<%= @booking.ot_20 %></p>
+<p>40OT：<%= @booking.ot_40 %></p>
+<p>20FR：<%= @booking.fr_20 %></p>
+<p>40FR：<%= @booking.fr_40 %></p>
 <p>年：<%= @booking.year %></p>
 <p>船名とかETAとか：<%= @booking.main_column %></p>
 <p>その他Remark：<%= @booking.sub_column %></p>
