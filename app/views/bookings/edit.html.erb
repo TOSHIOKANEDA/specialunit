@@ -1,53 +1,79 @@
  <%= render 'shared/head' %> 
- 
- <h1>更新画面</h1>
- 
-<div class = "centering_item">
-  <%= form_tag("/bookings/#{@booking.id}", method: :patch ) do %>
-  <!--<div class = centering_line_item>-->
-  <!--  <strong>本数を訂正</strong>-->
-  <!--  <select name="volume" type="integer">-->
-  <!--      <% 10.times do |num| %>-->
-  <!--        <option value ="<%= num + 1 %>"><%= num + 1 %></option>-->
-  <!--      <% end %>-->
-  <!--  </select>-->
-  <!--</div>-->
-  
-  <div class = centering_line_item>
-    <strong>年を訂正<strong>
-      <select name="year" type="integer">
-        <% d = Date.today %>
-        <% @year = d.year %>
-        <option value ="<%= @year %>"><%= @year %></option>
-        <option value ="<%= @year + 1 %>"><%= @year + 1 %></option>
-      </select>
-  </div>
-        
-  <div class = centering_line_item>
-    <strong>ステータスを更新</strong>
-      <select name="status" type="integer">
-        <option value ="waiting">新規申請</option>
-        <option value ="confirmed">在庫OK</option>
-        <option value ="rejected">在庫ありません！</option>
-        <option value ="waiting_list">キャンセル待ち</option>
-      </select>
-  </div>
-  
-  <div class = centering_line_item>
-  <strong>EQCからのRemark</strong>  
-    <%= text_field_tag :eqc_column %>
-  </div>
-  
-  <div class = centering_line_item>
-  <strong>指定PICK日</strong>  
-    <%= date_field_tag :pick_up %>日以降
-  </div>
 
-  <div class = centering_line_item>  
-  <input type="submit" value="確定する" class = "btn-square-pop2">
+ <div class ="contents">
+    <div class="button_right"><button><%= link_to "ジャッジ検索に戻る", "/bookings/search" , {:class => "btn-square-pop2"}%></button></div>
+
+  <div class ="right_wrap">
+      <h1>更新内容</h1>
+    <%= form_tag("/bookings/#{@booking.id}", method: :patch ) do %>
+        <ul><strong>年を訂正<strong>
+          <select name="year" type="integer">
+            <% d = Date.today %>
+            <% @year = d.year %>
+            <option value ="<%= @year %>"><%= @year %></option>
+            <option value ="<%= @year + 1 %>"><%= @year + 1 %></option>
+          </select></ul>
+          
+
+        <ul><strong>ステータスを更新</strong>
+          <select name="status" type="integer">
+            <option value ="waiting">新規申請</option>
+            <option value ="confirmed">在庫OK</option>
+            <option value ="rejected">在庫ありません！</option>
+            <option value ="waiting_list">キャンセル待ち</option>
+          </select></ul>
+    
+       <ul><strong>EQCからのRemark</strong>  
+        <%= text_field_tag :eqc_column %></ul>
+      
+      <ul><strong>指定PICK日</strong>  
+        <%= date_field_tag :pick_up %>日以降</ul>
+    
+      <ul><input type="submit" value="確定する" class = "btn-square-pop2"></ul>
+    <% end %>
   </div>
   
-<% end %>
-      
+  <div class = "left_wrap">
+    <table class ="aaa">
+    <h1>選択したTK申請</h1>
+    <tr><th>港</th>
+    <td><%= @booking.place%></td>
+    </tr>
+    
+    <tr><th>ステータス</th>
+    <td><%= @booking.status%></td>
+    </tr>
+    
+    <tr><th>WEEK</th>
+    <td><%= @booking.week%></td>
+    </tr>
+   
+    <tr><th>20OT</th>
+    <%unless @booking.ot_20.to_i.zero? %>
+    <td><%= @booking.ot_20%></td>
+    <%end%>
+    </tr>
+    
+    <tr><th>40OT</th>
+    <%unless @booking.ot_40.to_i.zero? %>
+    <td><%= @booking.ot_40%></td>
+    <%end%>
+    </tr>
+
+    <tr><th>20FR</th>
+    <%unless @booking.fr_20.to_i.zero? %>
+    <td><%= @booking.fr_20%></td>
+    <%end%>
+    </tr>
+    
+    <tr><th>40FR</th>
+    <%unless @booking.fr_40.to_i.zero? %>
+    <td><%= @booking.fr_40%></td>
+    <%end%>
+    </tr>
+    </table>
+  </div>
+  
 </div>
+
 <%= render 'shared/bottom' %>

@@ -4,26 +4,26 @@
   
 
   <div class = "centering_item">
-    <div class = centering_line_item>
-      <strong multiple>コンテナタイプ</strong>
-        <select name="kind" type="string">
-          <option value ="">ALL</option>
-          <option value ="20FR">20FR</option>
-          <option value ="40FR">40FR</option>
-          <option value ="20OT">20OT</option>
-          <option value ="40OT">40OT</option>
-        </select>
-    </div>
+  <!--  <div class = centering_line_item>-->
+  <!--    <strong multiple>コンテナタイプ</strong>-->
+  <!--      <select name="kind" type="string">-->
+  <!--        <option value ="">ALL</option>-->
+  <!--        <option value ="20FR">20FR</option>-->
+  <!--        <option value ="40FR">40FR</option>-->
+  <!--        <option value ="20OT">20OT</option>-->
+  <!--        <option value ="40OT">40OT</option>-->
+  <!--      </select>-->
+  <!--  </div>-->
     
-     <!--<div class = centering_line_item>-->
-     <!--  <strong multiple>WEEK</strong>-->
-     <!--     <select name="week" type="integer">-->
-     <!--       <option value ="">ALL</option>-->
-     <!--       <% 52.times do |num| %>-->
-     <!--          <option value ="<%= num + 1 %>"><%= num + 1 %></option>-->
-     <!--       <% end %>-->
-     <!--     </select>-->
-     <!-- </div>-->
+     <div class = centering_line_item>
+       <strong multiple>WEEK</strong>
+          <select name="week" type="integer">
+            <option value ="">ALL</option>
+            <% 52.times do |num| %>
+               <option value ="<%= num + 1 %>"><%= num + 1 %></option>
+            <% end %>
+          </select>
+      </div>
   
      <div class = centering_line_item>
        <strong multiple>港</strong>
@@ -56,15 +56,15 @@
         </select>
     </div>
     
-    <!--<div class = centering_line_item>-->
-    <!--    <strong multiple>YEAR</strong>  -->
-    <!--    <select name="year"  type="integer">-->
-    <!--    <% d = Date.today %>-->
-    <!--    <% @year = d.year %>-->
-    <!--    <option value ="<%= @year %>"><%= @year %></option>-->
-    <!--    <option value ="<%= @year + 1 %>"><%= @year + 1 %></option>-->
-    <!--    </select>-->
-    <!--</div>-->
+    <div class = centering_line_item>
+        <strong multiple>YEAR</strong>  
+        <select name="year"  type="integer">
+        <% d = Date.today %>
+        <% @year = d.year %>
+        <option value ="<%= @year %>"><%= @year %></option>
+        <option value ="<%= @year + 1 %>"><%= @year + 1 %></option>
+        </select>
+    </div>
 
     <input type="submit" value ="確認画面へ" class = "btn-square-pop2">
     <%= content_tag :button, "Excelダウンロード", :class=>"btn-square-pop2", :formaction => bookings_download_path %>

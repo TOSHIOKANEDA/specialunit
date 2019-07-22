@@ -24,15 +24,9 @@ def seek_booking_result
       @w_ot_40 = booking_params[:ot_40]
       @w_fr_20 = booking_params[:fr_20]
       @w_fr_40 = booking_params[:fr_40]
-      # @w_ot_20 = "20OT" if @w_ot_20.present
-      # @w_ot_40 = "40OT" if @w_ot_40.present
-      # @w_fr_20 = "20FR" if @w_fr_20.present
-      # @w_fr_40 = "40FR" if @w_fr_40.present
+
       
       @booking = Booking.where(place: @w_place).where(week: @w_week)
-      # @kind_sum = @booking[:ot_20].to_i.inject.(:+)
-      
-      
       
       @a = Accepting.where(place: @w_place, kind: @w_kind, week: @w_week)
       @a_day_behind = Accepting.where('kind=? and place=? and week=?', @w_kind, @w_place, (@w_week.to_i + 1))
@@ -72,21 +66,42 @@ end
 
 def result
   a = params[:place]
+  b = params[:year]
+  c = params[:week]
   d = params[:status]
   
-  place_condition = Booking.where(place: a).paginate(page: params[:page], per_page: 10)
-  all_condition = Booking.where(place: a).where(status: d).paginate(page: params[:page], per_page: 10)
+  place_condition = Booking.where(place: a).where(status: d).paginate(page: params[:page], per_page: 10)
+  year_condition = Booking.where(year: b).where(status: d).paginate(page: params[:page], per_page: 10)
+  all_condition = Booking.where(place: a).where(year: b).where(week: c).where(status: d).paginate(page: params[:page], per_page: 10)
   status_condition = Booking.where(status: d).paginate(page: params[:page], per_page: 10)
-
-  if a.present?
-    if d.present?
-    @results = all_condition
+  week_condition = Booking.where(week: c).where(status: d).paginate(page: params[:page], per_page: 10)
+  
+if a.present?
+    if b.present?
+      if c.present?
+      @results = all_condition
+      else
+      @results = place_condition.where(year: b)
+      end
+    elsif c.present?
+      @results = place_condition.where(week: c)
     else
-    @results = place_condition
+      @results = place_condition
     end
-  else
+    
+elsif b.present?
+    if c.present?
+    @results = week_condition.where(year: b)
+    else
+    @results = year_condition
+    end
+    
+elsif c.present?
+    @results = week_condition
+    
+else
     @results = status_condition
-  end
+end
   redirect_to({action: 'search'}, alert: "その条件ではなし！") if @results.blank?
 end
 
@@ -95,17 +110,15 @@ end
 
 def downdload
   a = params[:place]
-  b = params[:kind]
+  b = params[:year]
   c = params[:week]
   d = params[:status]
   
-
-  
   place_condition = Booking.where(place: a).where(status: d)
-  kind_condition = Booking.where(kind: b).where(status: d)
-  all_condition = Booking.where(place: a).where(kind: b)
+  year_condition = Booking.where(year: b).where(status: d)
+  all_condition = Booking.where(place: a).where(year: b).where(week: c).where(status: d)
   status_condition = Booking.where(status: d)
-  week_condition = Booking.where(week: c)
+  week_condition = Booking.where(week: c).where(status: d)
   
 
   if a.present?
@@ -117,7 +130,7 @@ def downdload
       format.xlsx {response.headers['Content-Disposition'] = 'attachment; filename="Product.xlsx"'}
       end
       else
-      @results = place_condition.where(kind: b)
+      @results = place_condition.where(year: b)
       respond_to do |format|
       format.html
       format.xlsx {response.headers['Content-Disposition'] = 'attachment; filename="Product.xlsx"'}
@@ -141,7 +154,7 @@ def downdload
     if b.present?
       if c.present?
     else
-      @results = kind_condition
+      @results = year_condition
       respond_to do |format|
       format.html
       format.xlsx {response.headers['Content-Disposition'] = 'attachment; filename="Product.xlsx"'}
@@ -161,15 +174,16 @@ def downdload
     end
     end
   end
-
+  
+  
     Axlsx::Package.new do |p|
     p.workbook.add_worksheet(name: "一覧") do |sheet|
-      sheet.add_row ["ステータス","申請日","TK番号","港","本数","WEEK","YEAR","コンテナタイプ","名前","リマーク","許可日"]
+      sheet.add_row ["ステータス","申請日","TK番号","港","20OT","40OT","20FR","40FR","WEEK","YEAR","コンテナタイプ","名前","リマーク","許可日"]
       @results.each do |ddl|
       if ddl.status == "confirmed"
-      sheet.add_row [ddl.status, ddl.created_at.strftime('%Y年%m月%d日'), ddl.tk_number, ddl.place, ddl.volume, ddl.week, ddl.year, ddl.kind, ddl.email, ddl.main_column,ddl.updated_at.strftime('%Y年%m月%d日')]
+      sheet.add_row [ddl.status, ddl.created_at.strftime('%Y年%m月%d日'), ddl.tk_number, ddl.place, ddl.ot_20, ddl.ot_40, ddl.fr_20, ddl.fr_40, ddl.week, ddl.year, ddl.email, ddl.main_column,ddl.updated_at.strftime('%Y年%m月%d日')]
       else
-      sheet.add_row [ddl.status, ddl.created_at.strftime('%Y年%m月%d日'), ddl.tk_number, ddl.place, ddl.volume, ddl.week, ddl.year, ddl.kind, ddl.email, ddl.main_column]
+      sheet.add_row [ddl.status, ddl.created_at.strftime('%Y年%m月%d日'), ddl.tk_number, ddl.place, ddl.ot_20, ddl.ot_40, ddl.fr_20, ddl.fr_40, ddl.week, ddl.year, ddl.email, ddl.main_column]
       end
       end
     end

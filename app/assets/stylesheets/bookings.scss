@@ -46,6 +46,7 @@ html {
 
 .contents {
     height: calc(100vh - 140px);
+    width: 1600px;
 }
 
 
@@ -113,7 +114,7 @@ html {
 
 
 .left_wrap {
-  width: 49%; /*左カラム幅設定*/
+  width: 48%; /*左カラム幅設定*/
   float: left; /*左にフロート配置*/
   padding-left: 20px;
 }
@@ -127,9 +128,12 @@ html {
 }
 
 .right_wrap {
-  width: 49%; /*右カラム幅設定*/
+  width: 48%; /*右カラム幅設定*/
   float: right; /*右のフロート配置*/
+  padding-left: 20px;
+  
 }
+
 
 .right_wrap ul {
     line-height: 90px
